@@ -1,0 +1,47 @@
+:root {
+  --primary: #00b98e;
+  --secondary: #ff6922;
+  --light: #effdf5;
+  --dark: #0e2e50;
+}
+
+/*** Button ***/
+.btn {
+  transition: 0.5s;
+}
+.btn--radius {
+  border-radius: 7px !important;
+}
+.prev-btn--gray {
+  background-color: #ced6d2;
+}
+.btn.btn-primary,
+.btn.btn-secondary {
+  color: #ffffff;
+}
+
+.btn-square {
+  width: 38px;
+  height: 38px;
+}
+
+.btn-sm-square {
+  width: 32px;
+  height: 32px;
+}
+
+.btn-lg-square {
+  width: 48px;
+  height: 48px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: normal;
+  border-radius: 50px;
+}

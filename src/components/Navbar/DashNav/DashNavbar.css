@@ -1,0 +1,23 @@
+.header_title {
+  display: block;
+}
+.nav_icon {
+  font-size: 1.9rem;
+  cursor: pointer;
+  color: #666565 !important;
+}
+.nav_icon:hover {
+  color: var(--primary) !important;
+}
+.add_property_icon {
+  display: none !important;
+  padding: 0 !important;
+}
+@media (max-width: 768px) {
+  .header_title {
+    display: none !important;
+  }
+  .add_property_icon {
+    display: block !important;
+  }
+}

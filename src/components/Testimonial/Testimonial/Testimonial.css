@@ -1,0 +1,79 @@
+#testimonial {
+  padding-bottom: 100px !important;
+}
+.testimonial-carousel {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 576px) {
+  .testimonial-carousel {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+.testimonial-carousel .testimonial-item .border {
+  border: 1px dashed rgba(0, 185, 142, 0.3) !important;
+}
+
+.testimonial-carousel .owl-nav {
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  top: calc(50% - 20px);
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.testimonial-carousel .owl-nav .owl-prev,
+.testimonial-carousel .owl-nav .owl-next {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  background: var(--primary);
+  border-radius: 40px;
+  font-size: 20px;
+  transition: 0.5s;
+}
+
+.testimonial-carousel .owl-nav .owl-prev:hover,
+.testimonial-carousel .owl-nav .owl-next:hover {
+  background: var(--dark);
+}
+
+.slick-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 10;
+  fill: var(--light) !important;
+  background-color: var(--primary);
+  border-radius: 50%;
+}
+
+.slick-arrow:hover {
+  background-color: var(--light);
+  fill: var(--primary) !important;
+}
+
+.slider-arrow.slick-prev {
+  right: 100px !important;
+}
+
+.slider-arrow.slick-next {
+  left: 100px !important;
+}
+
+.slider-arrow svg {
+  width: 40px;
+  height: 40px;
+  fill: #fff;
+}
