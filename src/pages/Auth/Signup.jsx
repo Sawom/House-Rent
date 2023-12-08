@@ -6,6 +6,7 @@ import singupImg from "../../assets/images/signup-image.jpg";
 import classes from "./styles.module.css";
 import {  createUserWithEmailAndPassword, getAuth, sendEmailVerification, updateProfile } from "firebase/auth";
 import useAuth from '../Auth/useAuth/useAuth';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Signup = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -15,27 +16,52 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [ confirmpass, setConfirmpass] = useState("");
   const [errors, setErrors] = useState("");
-  
   const auth = getAuth();
   const { user} = useAuth();
 
+  const navigate = useNavigate();
+    // navigate
+  if(user?.email){
+      navigate('/home');
+  }
 
-  const handleNameChange = (e) => {
-    setName(e.target.value);
+  // name
+  const handleName = event =>{
+      setName(event.target.value);
+  }
+
+  // email
+  const handleEmail = event =>{
+      setEmail(event.target.value);
+  }
+
+  // password
+  const handlePassword = event =>{
+      setPassword(event.target.value);
+  }
+
+  // confirm password
+  const handleConfirmpass = event =>{
+      setConfirmpass(event.target.value);
+  }
+  
+  // handle phone
+  const handlePhone = (event) => {
+    setPhone(event.target.value);
   };
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
+  // verify email
+  const verifyEmail = () =>{
+        sendEmailVerification(auth.currentUser)
+        .then(()=>{
+            
+        })
+        .catch((error) => {
+            setErrors(error.message);
+        });
+  }
 
-  const handlePhoneChange = (e) => {
-    setPhone(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
+  // password visible or not
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
   };
@@ -105,14 +131,16 @@ const Signup = () => {
                       className={`${classes.zmdi} zmdi zmdi-account material-icons-name`}
                     ></i>
                   </label>
+
                   <input
                     type="text"
                     name="name"
                     id="name"
                     placeholder="Your Name"
                     value={name}
-                    onChange={handleNameChange}
+                    onChange={handleName}
                   />
+
                 </div>
                 {errors.name && (
                   <p className={classes.error_message}>{errors.name}</p>
@@ -125,14 +153,16 @@ const Signup = () => {
                   <label htmlFor="email">
                     <i className={`${classes.zmdi} zmdi zmdi-email`}></i>
                   </label>
+
                   <input
                     type="email"
                     name="email"
                     id="email"
                     placeholder="Your Email"
                     value={email}
-                    onChange={handleEmailChange}
+                    onChange={handleEmail}
                   />
+
                 </div>
                 {errors.email && (
                   <p className={classes.error_message}>{errors.email}</p>
@@ -145,14 +175,16 @@ const Signup = () => {
                   <label htmlFor="phone">
                     <i className={`${classes.zmdi} zmdi zmdi-phone`}></i>
                   </label>
+
                   <input
                     type="text"
                     name="phone"
                     id="phone"
                     placeholder="Your phone number"
                     value={phone}
-                    onChange={handlePhoneChange}
+                    onChange={handlePhone}
                   />
+
                 </div>
                 {errors.phone && (
                   <p className={classes.error_message}>{errors.phone}</p>
@@ -165,12 +197,13 @@ const Signup = () => {
                   <label htmlFor="password">
                     <i className={`${classes.zmdi} zmdi zmdi-lock`}></i>
                   </label>
+
                   <input
                     type={isPasswordVisible ? "text" : "password"}
                     id="password"
                     placeholder="Password"
                     value={password}
-                    onChange={handlePasswordChange}
+                    onChange={handlePassword}
                   />
 
                   <button
@@ -200,7 +233,7 @@ const Signup = () => {
                     id="confirmpassword"
                     placeholder="Confirm Password"
                     value={password}
-                    onChange={handlePasswordChange}
+                    onChange={handleConfirmpass}
                   />
 
                   <button
