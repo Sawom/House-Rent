@@ -4,6 +4,8 @@ import notEyeImg from "../../assets/images/eye_closed.svg";
 import eyeImg from "../../assets/images/eye_open.svg";
 import singupImg from "../../assets/images/signup-image.jpg";
 import classes from "./styles.module.css";
+import {  createUserWithEmailAndPassword, getAuth, sendEmailVerification, updateProfile } from "firebase/auth";
+import useAuth from '../Auth/useAuth/useAuth';
 
 const Signup = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -11,7 +13,12 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState({});
+  const [ confirmpass, setConfirmpass] = useState("");
+  const [errors, setErrors] = useState("");
+  
+  const auth = getAuth();
+  const { user} = useAuth();
+
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -90,6 +97,7 @@ const Signup = () => {
               id="register-form"
               onSubmit={handleSubmit}
             >
+              {/* name */}
               <div className={classes.form_control}>
                 <div className={classes.input_group}>
                   <label htmlFor="name">
@@ -110,6 +118,8 @@ const Signup = () => {
                   <p className={classes.error_message}>{errors.name}</p>
                 )}
               </div>
+
+              {/* email */}
               <div className={classes.form_control}>
                 <div className={classes.input_group}>
                   <label htmlFor="email">
@@ -129,6 +139,7 @@ const Signup = () => {
                 )}
               </div>
 
+              {/* phone */}
               <div className={classes.form_control}>
                 <div className={classes.input_group}>
                   <label htmlFor="phone">
@@ -148,6 +159,7 @@ const Signup = () => {
                 )}
               </div>
 
+              {/* password */}
               <div className={classes.form_control}>
                 <div className={classes.input_group}>
                   <label htmlFor="password">
@@ -177,6 +189,37 @@ const Signup = () => {
                 )}
               </div>
 
+              {/* confirm password */}
+              <div className={classes.form_control}>
+                <div className={classes.input_group}>
+                  <label htmlFor="password">
+                    <i className={`${classes.zmdi} zmdi zmdi-lock`}></i>
+                  </label>
+                  <input
+                    type={isPasswordVisible ? "text" : "password"}
+                    id="confirmpassword"
+                    placeholder="Confirm Password"
+                    value={password}
+                    onChange={handlePasswordChange}
+                  />
+
+                  <button
+                    type="button"
+                    className={classes.show_passwd}
+                    onClick={togglePasswordVisibility}
+                  >
+                    <img
+                      src={isPasswordVisible ? eyeImg : notEyeImg}
+                      alt="Show Password"
+                    />
+                  </button>
+                </div>
+                {errors.password && (
+                  <p className={classes.error_message}>{errors.password}</p>
+                )}
+              </div>
+
+              {/* reg button */}
               <div className={`${classes.form_group} ${classes.form_button}`}>
                 <input
                   type="submit"
@@ -186,6 +229,7 @@ const Signup = () => {
                   value="Register"
                 />
               </div>
+
             </form>
           </div>
           <div className={classes.signup_image}>
