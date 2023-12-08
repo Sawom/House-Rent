@@ -14,7 +14,7 @@ const NavLayout = () => {
   return (
     <>
       <Navbar />
-      <Outlet />
+        <Outlet />
       <Footer />
     </>
   );
