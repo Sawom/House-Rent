@@ -44,6 +44,11 @@ const Signup = () => {
   const handleConfirmpass = event =>{
       setConfirmpass(event.target.value);
   }
+
+  // password visible or not
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
   
   // handle phone
   const handlePhone = (event) => {
@@ -61,54 +66,49 @@ const Signup = () => {
         });
   }
 
-  // password visible or not
-  const togglePasswordVisibility = () => {
-    setIsPasswordVisible(!isPasswordVisible);
-  };
+  // register new user
+  const registerNewUser = (email,password) =>{
+        createUserWithEmailAndPassword(auth, email , password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+            setErrors('');
+            verifyEmail();
+            setUserName();
+        })
+        .catch(error => {
+        setErrors(error.message);
+      })
+  }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // set user name
+  const setUserName = () => {
+        const auth = getAuth();
+        updateProfile(auth.currentUser, { displayName: name })
+        .then(result => {  
+            
+        })
+        .catch((error) => {
+            setErrors(error.message);
+        });
+  }
 
-    // Simple validation example (you can replace it with your own validation logic)
-    const newErrors = {};
-    if (!name.trim()) {
-      newErrors.name = "Name is required";
-    }
-    if (!email.trim()) {
-      newErrors.email = "Email is required";
-    }
-    if (!phone.trim()) {
-      newErrors.phone = "Phone number is required";
-    }
-    if (!password.trim()) {
-      newErrors.password = "Password is required";
-    }
-
-    if (Object.keys(newErrors).length === 0) {
-      try {
-        // Assuming you have an API endpoint for user registration
-        const response = await axios.post(
-          "https://your-api-endpoint.com/register",
-          {
-            name,
-            email,
-            phone,
-            password,
-          }
-        );
-
-        // Handle the API response as needed
-        console.log("API Response:", response.data);
-
-        // You might want to redirect the user or perform other actions based on the API response
-      } catch (error) {
-        // Handle errors, such as displaying an error message
-        console.error("API Error:", error.message);
-      }
-    } else {
-      // Update the errors state to display validation messages
-      setErrors(newErrors);
-    }
+  // create a new user
+  const  handleRegistration = async (event) => {
+    event.preventDefault();
+     if(password !== confirmpass){
+            setErrors("Your password did not match! ");
+            return;
+        }
+        if(password.length < 6){
+            setErrors('Password Must be at least 6 characters long.');
+            return;
+        }
+        if (!/(?=.*[A-Z].*[A-Z])/.test(password)) {
+            setErrors('Password Must contain 2 upper case');
+            return;
+        }
+        registerNewUser(email, password);
   };
 
   return (
@@ -121,7 +121,7 @@ const Signup = () => {
               method="POST"
               className={classes.register_form}
               id="register-form"
-              onSubmit={handleSubmit}
+              onSubmit={handleRegistration}
             >
               {/* name */}
               <div className={classes.form_control}>
