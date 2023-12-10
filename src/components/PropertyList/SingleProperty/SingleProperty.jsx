@@ -1,6 +1,16 @@
 import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../../../pages/Auth/useAuth/useAuth";
 
-const SingleProperty = ({ propertyImg, delayTime, bgwhite }) => {
+const SingleProperty = ({ propertyImg, delayTime, bgwhite, rentData }) => {
+  const { _id, code, name, category, gender, propertytype, balcony,
+     bedroom, bathroom, floor, division,  district, thana, availablefrom, rent, summary, addedby, img1, img2  } = rentData;
+  
+  const {user} = useAuth();
+
+  let navigate = useNavigate();
+  const location = useLocation();
+  
   // Conditionally update styles based on bgwhite
   const conditionalStyles = {
     boxShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
