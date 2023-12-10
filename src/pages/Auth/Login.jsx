@@ -4,60 +4,95 @@ import notEyeImg from "../../assets/images/eye_closed.svg";
 import eyeImg from "../../assets/images/eye_open.svg";
 import singinImg from "../../assets/images/signin-image.jpg";
 import classes from "./styles.module.css";
+import useAuth from "./useAuth/useAuth";
+import { getAuth } from "firebase/auth";
+import { useLocation, useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 const Login = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState("");
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
+  // google sign in
+  const {user, signInWithGoogle } = useAuth();
+  const auth = getAuth();
+  const navigate = useNavigate();
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
+  const location = useLocation()
+  const from = location.state?.from?.pathname || "/"
 
+   // email
+  const handleEmail = event => {
+      setEmail(event.target.value);
+  }
+
+  // password
+  const handlePassword = event => {
+      setPassword(event.target.value);
+  }
+
+  // password visible or not
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+   // handle login with email
+  const handleLogin = (email, password)=>{
+        signInWithEmailAndPassword(auth, email, password)
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+                setErrors('');
 
-    // Simple validation example (you can replace it with your own validation logic)
-    const newErrors = {};
-    if (!email.trim()) {
-      newErrors.email = "Email is required";
-    }
-    if (!password.trim()) {
-      newErrors.password = "Password is required";
-    }
+                // change. login er por zeikhane zawar seikhane zabe
+                navigate(from, {replace: true})
+            })
+            .catch((error) => {
+               setErrors(error.message);
+        });
+  }
 
-    if (Object.keys(newErrors).length === 0) {
-      try {
-        const response = await axios.post(
-          "https://your-api-endpoint.com/login",
-          {
-            email,
-            password,
-          }
-        );
+   // user login 
+  const handleUserLogin = event =>{
+        // ei line must form e add kora lage.
+        event.preventDefault();  
+        handleLogin(email, password);
+  }
 
-        // Handle the API response as needed
-        console.log("API Response:", response.data);
-
-        // You might want to redirect the user or perform other actions based on the API response
-      } catch (error) {
-        // Handle errors, such as displaying an error message
-        console.error("API Error:", error.message);
-      }
-    } else {
-      // Update the errors state to display validation messages
-      setErrors(newErrors);
-    }
-  };
+  // reset password
+  const resetPassword = async () => {
+        if (email) {
+            await sendPasswordResetEmail(auth, email)
+            .then(result =>{
+                 // sweet alert
+                Swal.fire({
+                    title: 'Email sent. Check your email.',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    }
+                })
+            })
+           .catch((error) => {
+               setErrors(error.message);
+            });
+        }
+        else{
+            Swal.fire({
+                title: 'Please enter your email address',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            })
+        }
+  }
 
   return (
     <section className={classes.signin}>
@@ -78,8 +113,10 @@ const Login = () => {
               method="POST"
               className={classes.register_form}
               id="login-form"
-              onSubmit={handleSubmit}
+              onSubmit={handleUserLogin}
             >
+
+              {/* email */}
               <div className={classes.form_control}>
                 <div className={classes.input_group}>
                   <label htmlFor="email">
@@ -91,7 +128,7 @@ const Login = () => {
                     placeholder="Your Email"
                     name="email"
                     value={email}
-                    onChange={handleEmailChange}
+                    onChange={handleEmail} required
                   />
                 </div>
                 {errors.email && (
@@ -99,6 +136,7 @@ const Login = () => {
                 )}
               </div>
 
+              {/* password */}
               <div className={classes.form_control}>
                 <div className={classes.input_group}>
                   <label htmlFor="password">
@@ -111,7 +149,7 @@ const Login = () => {
                     name="password"
                     id="password"
                     value={password}
-                    onChange={handlePasswordChange}
+                    onChange={handlePassword} required
                   />
 
                   <button

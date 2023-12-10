@@ -147,7 +147,7 @@ const Signup = () => {
                     id="name"
                     placeholder="Your Name"
                     value={name}
-                    onChange={handleName}
+                    onChange={handleName} required
                   />
 
                 </div>
@@ -169,7 +169,7 @@ const Signup = () => {
                     id="email"
                     placeholder="Your Email"
                     value={email}
-                    onChange={handleEmail}
+                    onChange={handleEmail} required
                   />
 
                 </div>
@@ -186,12 +186,12 @@ const Signup = () => {
                   </label>
 
                   <input
-                    type="text"
+                    type="number"
                     name="phone"
                     id="phone"
                     placeholder="Your phone number"
                     value={phone}
-                    onChange={handlePhone}
+                    onChange={handlePhone} required
                   />
 
                 </div>
@@ -212,7 +212,7 @@ const Signup = () => {
                     id="password"
                     placeholder="Password"
                     value={password}
-                    onChange={handlePassword}
+                    onChange={handlePassword} required
                   />
 
                   <button
@@ -242,7 +242,7 @@ const Signup = () => {
                     id="confirmpassword"
                     placeholder="Confirm Password"
                     value={confirmpass}
-                    onChange={handleConfirmpass}
+                    onChange={handleConfirmpass} required
                   />
 
                   <button
@@ -262,17 +262,17 @@ const Signup = () => {
               </div>
 
               {/* account type */}
-              <Select
+              <Select fullWidth
                 value={type}
                 onChange={handleType}
                 displayEmpty
-                inputProps={{ 'aria-label': 'Without label' }}
+                inputProps={{ 'aria-label': 'Without label' }} required
               >
                 <MenuItem value="">
                   <p>Account Type</p>
                 </MenuItem>
-                <MenuItem value={Landlord} >Landlord</MenuItem>
-                <MenuItem value={Tenant}>Tenant</MenuItem>
+                <MenuItem value={'Landlord'} >Landlord</MenuItem>
+                <MenuItem value={'Tenant'}>Tenant</MenuItem>
               </Select>
 
               {/* reg button */}
