@@ -20,43 +20,54 @@ const SingleProperty = ({ propertyImg, delayTime, bgwhite, rentData }) => {
 
   return (
     <div
-      className="col-lg-4 py-2 col-md-6 wow fadeInUp"
-      data-wow-delay={delayTime}
+      className="col-lg-4 py-2 px-2 col-md-6 col-12 wow fadeInUp"
+      data-wow-delay={delayTime} 
     >
       <div
         className={`property-item rounded overflow-hidden `}
         style={conditionalStyles}
       >
         <div className="position-relative overflow-hidden">
+          {/* img */}
           <a href="/property-info">
-            <img className="img-fluid" src={propertyImg} alt="" />
+            <img className="img-fluid" src={img1} alt="" />
           </a>
+
+          {/* category */}
           <div className="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">
-            For Family
+            For {category}
           </div>
+
           <div className="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">
             Room
           </div>
+          
         </div>
+
         <div className="p-4 pb-0">
-          <h5 className="text-primary mb-3">$12,345</h5>
+          {/* rent */}
+          <h5 className="text-primary mb-3"> {rent} BDT/Month </h5>
+          {/* name */}
           <a className="d-block h5 mb-2" href="/property-info">
-            Golden Urban House For Sell
+            {name}
           </a>
+
+          {/* division */}
           <p>
-            <i className="fa fa-map-marker-alt text-primary me-2"></i>123
-            Street, New York, USA
+            <i className="fa fa-map-marker-alt text-primary me-2"></i>
+            {division}
           </p>
+
         </div>
         <div className="d-flex border-top">
           <small className="flex-fill text-center border-end py-2">
-            <i className="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft
+            <i className="fa fa-ruler-combined text-primary me-2"></i> {balcony} balcony
           </small>
           <small className="flex-fill text-center border-end py-2">
-            <i className="fa fa-bed text-primary me-2"></i>3 Bed
+            <i className="fa fa-bed text-primary me-2"></i> {bedroom} Bed
           </small>
           <small className="flex-fill text-center py-2">
-            <i className="fa fa-bath text-primary me-2"></i>2 Bath
+            <i className="fa fa-bath text-primary me-2"></i> {bathroom} Bath
           </small>
         </div>
       </div>

@@ -7,6 +7,7 @@
   transition: all 0.3s;
   /* z-index: ; */
 }
+
 @media only screen and (min-width: 992px) {
   #content {
     margin-left: 250px;
