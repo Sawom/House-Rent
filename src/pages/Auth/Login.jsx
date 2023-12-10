@@ -1,13 +1,12 @@
-import axios from "axios";
+import { getAuth, sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 import notEyeImg from "../../assets/images/eye_closed.svg";
 import eyeImg from "../../assets/images/eye_open.svg";
 import singinImg from "../../assets/images/signin-image.jpg";
 import classes from "./styles.module.css";
 import useAuth from "./useAuth/useAuth";
-import { getAuth } from "firebase/auth";
-import { useLocation, useNavigate } from "react-router-dom";
-import Swal from 'sweetalert2';
 
 const Login = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -39,22 +38,31 @@ const Login = () => {
   };
 
    // handle login with email
-  const handleLogin = (email, password)=>{
+   const handleLogin = (email, password)=>{
         signInWithEmailAndPassword(auth, email, password)
             .then((result) => {
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
                 setErrors('');
-
-                // change. login er por zeikhane zawar seikhane zabe
                 navigate(from, {replace: true})
             })
+            .then(()=>{
+                Swal.fire({
+                        title: 'User Login Successful!',
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        }
+                    })
+        })
             .catch((error) => {
                setErrors(error.message);
         });
   }
 
-   // user login 
+  // user login 
   const handleUserLogin = event =>{
         // ei line must form e add kora lage.
         event.preventDefault();  

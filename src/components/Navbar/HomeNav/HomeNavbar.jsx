@@ -132,7 +132,7 @@ const Navbar = () => {
             {
               user?.email ? 
               <div>
-                  <Button className="nav-item nav-link logOut" >Logout</Button>
+                  <Button className="nav-item nav-link logOut" onClick={logoutFunction} >Logout</Button>
               </div>
               :
               <Link to="/login" className="nav-item nav-link">

@@ -1,14 +1,13 @@
-import axios from "axios";
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import { createUserWithEmailAndPassword, getAuth, sendEmailVerification, updateProfile } from "firebase/auth";
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import notEyeImg from "../../assets/images/eye_closed.svg";
 import eyeImg from "../../assets/images/eye_open.svg";
 import singupImg from "../../assets/images/signup-image.jpg";
-import classes from "./styles.module.css";
-import {  createUserWithEmailAndPassword, getAuth, sendEmailVerification, updateProfile } from "firebase/auth";
 import useAuth from '../Auth/useAuth/useAuth';
-import { Link, useNavigate } from 'react-router-dom';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
+import classes from "./styles.module.css";
 
 const Signup = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -26,7 +25,7 @@ const Signup = () => {
   const navigate = useNavigate();
     // navigate
   if(user?.email){
-      navigate('/home');
+      navigate('/');
   }
 
   // name
@@ -126,6 +125,8 @@ const Signup = () => {
         <div className={classes.signup_content}>
           <div className={classes.signup_form}>
             <h2 className={classes.form_title}>Sign up</h2>
+            <small>*Password Must be at least 6 characters long and should have 2 uppercase</small>
+            <br /> <br />
             <form
               method="POST"
               className={classes.register_form}
@@ -213,7 +214,7 @@ const Signup = () => {
                     placeholder="Password"
                     value={password}
                     onChange={handlePassword} required
-                  />
+                  /> 
 
                   <button
                     type="button"
@@ -285,6 +286,9 @@ const Signup = () => {
                   value="Register"
                 />
               </div>
+              <br />
+              {/* show error */}
+              <p style={{color: 'red'}} > {errors} </p>
 
             </form>
           </div>
