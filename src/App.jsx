@@ -4,7 +4,7 @@ import AddProperty from "./components/AddProperty/AddProperty/AddProperty";
 import Profile from "./components/Profile/Profile/Profile";
 import NavLayout from "./layouts/NavLayout";
 import Signup from "./pages/Auth/Signup";
-import Login from "./pages/Auth/login";
+import Login from "./pages/Auth/Login";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Home from "./pages/Home/Home";
 import PropertyInfo from "./pages/PropertyInfo/PropertyInfo";
@@ -30,6 +30,7 @@ function App() {
                     <Route path="signup" element={<Signup />} />
                     <Route path="add-property" element={<AddProperty />} />
                   </Route>
+                  {/* apartments */}
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/property-info" element={<PropertyInfo />} />
                   <Route path="/profile" element={<Profile />} />

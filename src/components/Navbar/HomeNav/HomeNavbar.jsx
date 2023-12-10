@@ -1,16 +1,40 @@
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 
-import { Menu, MenuItem } from "@mui/joy";
-import { IconButton } from "@mui/material";
+import { Button } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import logoImg from "../../../assets/images/icon-deal.png";
+import useAuth from "../../../pages/Auth/useAuth/useAuth";
 import "./HomeNavbar.css";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const navbarRef = useRef(null);
   const [isSticky, setIsSticky] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const {user, logoutUser} = useAuth();
+
+  // logout
+  const logoutFunction =() =>{
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You will be signed out.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Signed Out!'
+        }).then(result =>{
+            if (result.isConfirmed){
+                logoutUser();
+                Swal.fire(
+                        'Signed out!',
+                        'You are signed out.',
+                        'success'
+                )
+            }
+        }) 
+        refetch()
+    }
 
   const open = Boolean(anchorEl);
   const ITEM_HEIGHT = 48;
@@ -95,20 +119,32 @@ const Navbar = () => {
               Home
             </Link>
             <Link to="/dashboard" className="nav-item nav-link">
-              Dashboard
+              Apartments
             </Link>
             <Link to="/profile" className="nav-item nav-link">
               Profile
             </Link>
-            {/* <Link to="/dashboard" className="nav-item nav-link">
-              Logout
-            </Link> */}
-            <Link to="/login" className="nav-item nav-link">
-              Login
-            </Link>
             <Link to="/signup" className="nav-item nav-link">
               Signup
             </Link>
+
+            {/* login/logout */}
+            {
+              user?.email ? 
+              <div>
+                  <Button className="nav-item nav-link logOut" >Logout</Button>
+              </div>
+              :
+              <Link to="/login" className="nav-item nav-link">
+                Login
+              </Link>
+            }
+            
+            
+            
+
+
+            
           </div>
           <Link
             to="/add-property"

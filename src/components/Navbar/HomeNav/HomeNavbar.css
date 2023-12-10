@@ -12,6 +12,12 @@
   z-index: 9999;
 }
 
+.logOut {
+  border: none;
+  color: black;
+  font-weight: 700;
+}
+
 .navbar {
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
 }

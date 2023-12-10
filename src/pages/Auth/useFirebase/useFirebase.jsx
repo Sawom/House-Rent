@@ -8,23 +8,6 @@ const useFirebase = () => {
     const [ error, setError] = useState('');
     const auth = getAuth();
 
-    // google login
-    const signInWithGoogle = () =>{
-        const googleProvider = new GoogleAuthProvider();
-        const auth = getAuth();
-            signInWithPopup(auth, googleProvider)
-            .then((result) => {
-                const credential = GoogleAuthProvider.credentialFromResult(result);
-                const token = credential.accessToken;
-                const user = result.user;
-            }).catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                const email = error.customData.email;
-                const credential = GoogleAuthProvider.credentialFromError(error);
-            });
-    } 
-
     // observer if user signin or not
     useEffect(()=>{
         const unsubscribed = onAuthStateChanged(auth, (user)=>{
@@ -50,7 +33,6 @@ const useFirebase = () => {
     return (
         {
             user,
-            signInWithGoogle,
             logoutUser,
         }
     );
