@@ -7,6 +7,8 @@ import classes from "./styles.module.css";
 import {  createUserWithEmailAndPassword, getAuth, sendEmailVerification, updateProfile } from "firebase/auth";
 import useAuth from '../Auth/useAuth/useAuth';
 import { Link, useNavigate } from 'react-router-dom';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
 
 const Signup = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -16,6 +18,8 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [ confirmpass, setConfirmpass] = useState("");
   const [errors, setErrors] = useState("");
+  const [type, setType] = useState("");
+
   const auth = getAuth();
   const { user} = useAuth();
 
@@ -44,6 +48,11 @@ const Signup = () => {
   const handleConfirmpass = event =>{
       setConfirmpass(event.target.value);
   }
+
+  // account type
+  const handleType = (event) => {
+    setType(event.target.value);
+  };
 
   // password visible or not
   const togglePasswordVisibility = () => {
@@ -232,7 +241,7 @@ const Signup = () => {
                     type={isPasswordVisible ? "text" : "password"}
                     id="confirmpassword"
                     placeholder="Confirm Password"
-                    value={password}
+                    value={confirmpass}
                     onChange={handleConfirmpass}
                   />
 
@@ -251,6 +260,20 @@ const Signup = () => {
                   <p className={classes.error_message}>{errors.password}</p>
                 )}
               </div>
+
+              {/* account type */}
+              <Select
+                value={type}
+                onChange={handleType}
+                displayEmpty
+                inputProps={{ 'aria-label': 'Without label' }}
+              >
+                <MenuItem value="">
+                  <p>Account Type</p>
+                </MenuItem>
+                <MenuItem value={Landlord} >Landlord</MenuItem>
+                <MenuItem value={Tenant}>Tenant</MenuItem>
+              </Select>
 
               {/* reg button */}
               <div className={`${classes.form_group} ${classes.form_button}`}>
