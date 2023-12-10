@@ -14,14 +14,9 @@ const Board = () => {
       <DashNavbar />
       <Container sx={{ padding: 2 }}>
         <div className="row">
-          <SingleProperty propertyImg={property1} delayTime="0.1s" />
-          <SingleProperty propertyImg={property2} delayTime="0.3s" />
-          <SingleProperty propertyImg={property3} delayTime="0.5s" />
-          <SingleProperty propertyImg={property3} delayTime="0.5s" />
-          <SingleProperty propertyImg={property1} delayTime="0.1s" />
-          <SingleProperty propertyImg={property2} delayTime="0.3s" />
-          <SingleProperty propertyImg={property3} delayTime="0.5s" />
-          <SingleProperty propertyImg={property3} delayTime="0.5s" />
+          <SingleProperty propertyImg={property1} delayTime="0.3s" />
+          
+          
         </div>
       </Container>
     </div>
