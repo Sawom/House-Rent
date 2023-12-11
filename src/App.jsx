@@ -16,6 +16,8 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query';
 import AuthProvider from "./pages/Auth/AuthProvider/AuthProvider";
+import PrivateRoute from "./pages/Auth/PrivateRoute/PrivateRoute";
+import DashboardPage from "./pages/DashboardPage/DashboardPage";
 const queryClient = new QueryClient();
 
 function App() {
@@ -34,6 +36,16 @@ function App() {
                   <Route path="/apartments" element={<Dashboard />} />
                   {/* dynamic route */}
                   <Route path="apartmentsinfo/:id" element={<PropertyInfo />} />
+
+                  {/* dashboard page */}
+                  <Route path='/dashboard' element={ 
+                    <PrivateRoute>
+                      <DashboardPage></DashboardPage>
+                    </PrivateRoute>
+                   } > 
+                      {/* user home */}
+                      <Route> </Route>
+                  </Route>
 
                   <Route path="/profile" element={<Profile />} />
                   <Route path="/saved-property" element={<SavedProperty />} />

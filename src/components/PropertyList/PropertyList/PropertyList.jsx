@@ -17,12 +17,12 @@ const PropertyList = ({bgwhite}) => {
         <div className="tab-content">
           <div id="tab-1" className="tab-pane fade show p-0 active">
             <div className="row g-4">
-              <SingleProperty propertyImg={property1} delayTime="0.1s" bgwhite={bgwhite}/>
-              <SingleProperty propertyImg={property2} delayTime="0.3s" bgwhite={bgwhite}/>
-              <SingleProperty propertyImg={property3} delayTime="0.5s" bgwhite={bgwhite}/>
-              <SingleProperty propertyImg={property4} delayTime="0.1s" bgwhite={bgwhite}/>
-              <SingleProperty propertyImg={property5} delayTime="0.3s" bgwhite={bgwhite}/>
-              <SingleProperty propertyImg={property6} delayTime="0.5s" bgwhite={bgwhite}/>
+              {/* <SingleProperty delayTime="0.1s" />
+              <SingleProperty delayTime="0.3s" />
+              <SingleProperty  delayTime="0.5s" />
+              <SingleProperty  delayTime="0.1s" />
+              <SingleProperty  delayTime="0.3s" />
+              <SingleProperty  delayTime="0.5s" /> */}
             </div>
           </div>
         </div>

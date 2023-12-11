@@ -131,7 +131,10 @@ const Navbar = () => {
             {/* login/logout */}
             {
               user?.email ? 
-              <div>
+              <div className="d-flex">
+                  <Link to="/dashboard" className="nav-item nav-link">
+                    Dashboard
+                  </Link>
                   <Button className="nav-item nav-link logOut" onClick={logoutFunction} >Logout</Button>
               </div>
               :
@@ -141,12 +144,7 @@ const Navbar = () => {
             }
             
           </div>
-          <Link
-            to="/add-property"
-            className="btn btn-primary px-3 d-none d-lg-flex"
-          >
-            Add Property
-          </Link>
+          
           {/* <div style={{ position: "relative" }}>
             <IconButton
               aria-label="more"
