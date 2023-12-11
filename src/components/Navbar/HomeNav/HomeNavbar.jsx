@@ -118,7 +118,7 @@ const Navbar = () => {
             <Link to="/" className="nav-item nav-link active">
               Home
             </Link>
-            <Link to="/dashboard" className="nav-item nav-link">
+            <Link to="/apartments" className="nav-item nav-link">
               Apartments
             </Link>
             <Link to="/profile" className="nav-item nav-link">
@@ -139,11 +139,6 @@ const Navbar = () => {
                 Login
               </Link>
             }
-            
-            
-            
-
-
             
           </div>
           <Link

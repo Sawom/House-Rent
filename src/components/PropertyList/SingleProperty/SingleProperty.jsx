@@ -10,6 +10,12 @@ const SingleProperty = ({ propertyImg, delayTime, bgwhite, rentData }) => {
 
   let navigate = useNavigate();
   const location = useLocation();
+
+  // dynamic route url
+  let url = `/apartmentsinfo/${_id}` ;
+    const handleView = ()=>{
+        navigate(url);
+    }
   
   // Conditionally update styles based on bgwhite
   const conditionalStyles = {
@@ -18,6 +24,7 @@ const SingleProperty = ({ propertyImg, delayTime, bgwhite, rentData }) => {
     backgroundColor: bgwhite === "false" ? "var(--light)" : "white",
   };
 
+  //*********** */ rent card
   return (
     <div
       className="col-lg-4 py-2 px-2 col-md-6 col-12 wow fadeInUp"
@@ -29,7 +36,7 @@ const SingleProperty = ({ propertyImg, delayTime, bgwhite, rentData }) => {
       >
         <div className="position-relative overflow-hidden">
           {/* img */}
-          <a href="/property-info">
+          <a onClick={handleView} >
             <img className="img-fluid" src={img1} alt="" />
           </a>
 
@@ -47,15 +54,16 @@ const SingleProperty = ({ propertyImg, delayTime, bgwhite, rentData }) => {
         <div className="p-4 pb-0">
           {/* rent */}
           <h5 className="text-primary mb-3"> {rent} BDT/Month </h5>
+          <small className="text-primary " > Code: {code} </small>
           {/* name */}
-          <a className="d-block h5 mb-2" href="/property-info">
+          <a className="d-block h5 mb-2" onClick={handleView}>
             {name}
           </a>
 
           {/* division */}
           <p>
             <i className="fa fa-map-marker-alt text-primary me-2"></i>
-            {division}
+            {division} 
           </p>
 
         </div>

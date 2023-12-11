@@ -31,8 +31,10 @@ function App() {
                     <Route path="add-property" element={<AddProperty />} />
                   </Route>
                   {/* apartments */}
-                  <Route path="/dashboard" element={<Dashboard />} />
-                  <Route path="/property-info" element={<PropertyInfo />} />
+                  <Route path="/apartments" element={<Dashboard />} />
+                  {/* dynamic route */}
+                  <Route path="apartmentsinfo/:id" element={<PropertyInfo />} />
+
                   <Route path="/profile" element={<Profile />} />
                   <Route path="/saved-property" element={<SavedProperty />} />
               </Routes>
