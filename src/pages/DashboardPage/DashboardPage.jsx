@@ -35,10 +35,11 @@ function DashboardPage(props) {
     <div>
       <Toolbar />
       <Divider />
+      
       {/* 1st list admin */}
       <List>
          {/* admin home */}
-        <Link to="/" >
+        <Link to="/dashboard/adminhome" >
             <ListItem  disablePadding>
                 <ListItemButton>
                 <ListItemIcon>
@@ -58,7 +59,7 @@ function DashboardPage(props) {
       {/* 2nd list landlord */}
       <List>
          {/* home */}
-        <Link to="/" >
+        <Link to="/dashboard/landlordhome" >
             <ListItem  disablePadding>
                 <ListItemButton>
                 <ListItemIcon>
@@ -78,29 +79,19 @@ function DashboardPage(props) {
       {/* 3rd list tenant */}
       <List>
          {/* home */}
-        <Link to="/" >
+        <Link to="/dashboard/tenanthome" >
             <ListItem  disablePadding>
                 <ListItemButton>
                 <ListItemIcon>
                     <CottageIcon />
                 </ListItemIcon>
-                <ListItemText primary="House-Rent" />
+                <ListItemText primary="Tenant Home" />
                 </ListItemButton>
             </ListItem>  
         </Link>
         
 
-        {/* test */}
-        <Link to="/apartments" >
-            <ListItem  disablePadding>
-                <ListItemButton>
-                <ListItemIcon>
-                    <HomeIcon />
-                </ListItemIcon>
-                <ListItemText primary="Apartments" />
-                </ListItemButton>
-            </ListItem>  
-        </Link>
+        
 
       </List>
       <Divider />
@@ -142,8 +133,9 @@ function DashboardPage(props) {
 
   return (
     <Box sx={{ display: 'flex' }}>
+        
       <CssBaseline />
-      <Outlet></Outlet>
+      
       <AppBar
         position="fixed"
         sx={{
@@ -203,21 +195,13 @@ function DashboardPage(props) {
         sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
         <Toolbar />
+        {/* page content */}
+        <Outlet></Outlet>
         <Typography paragraph>
           
         </Typography>
         <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
-          eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
-          neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra
-          tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis
-          sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
-          tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit
-          gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
-          et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis
-          tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuere sollicitudin aliquam ultrices sagittis orci a.
+          
         </Typography>
       </Box>
     </Box>
