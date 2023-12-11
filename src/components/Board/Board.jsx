@@ -7,15 +7,7 @@ import SingleProperty from "../PropertyList/SingleProperty/SingleProperty";
 import "./Board.css";
 
 const Board = () => {
-      const [rent,loading , refetch ] = useRent();
-      // const [rent, setRent] = useState([]);
-      // useEffect( ()=>{
-      //       fetch('http://localhost:5000/rent')
-      //       .then( res => res.json() )
-      //       .then(data =>{
-      //             setRent(data)
-      //       })
-      // }, [] )
+   const [rent,loading , refetch ] = useRent();
 
   return (
     <div id="content" className="">

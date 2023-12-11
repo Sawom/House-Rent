@@ -1,7 +1,10 @@
 import React from "react";
 import Slider from "react-slick";
+import useRent from "../../Hooks/useRent";
 
 const ImageCarousel = ({ images }) => {
+  const [rent,loading , refetch ] = useRent();
+
   const settings = {
     // dots: true,
     autoplay: true,
@@ -13,9 +16,9 @@ const ImageCarousel = ({ images }) => {
 
   return (
     <Slider {...settings} className="owl-carousel header-carousel">
-      {images?.map((img, index) => (
+      {rent.map((item, index) => (
         <div key={index} className="owl-carousel-item">
-          <img className="img-fluid" src={img} alt={`Slide ${index + 1}`} />
+          <img className="img-fluid" src={item.img2} alt={`Slide ${index + 1}`} />
         </div>
       ))}
     </Slider>
