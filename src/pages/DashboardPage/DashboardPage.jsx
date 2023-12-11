@@ -7,6 +7,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
+import CottageIcon from '@mui/icons-material/Cottage';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -16,6 +17,9 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
 import * as React from 'react';
+import { Link, Outlet } from 'react-router-dom';
+import HomeIcon from '@mui/icons-material/Home';
+
 
 const drawerWidth = 240;
 
@@ -31,31 +35,105 @@ function DashboardPage(props) {
     <div>
       <Toolbar />
       <Divider />
+      {/* 1st list admin */}
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+         {/* admin home */}
+        <Link to="/" >
+            <ListItem  disablePadding>
+                <ListItemButton>
+                <ListItemIcon>
+                    <CottageIcon />
+                </ListItemIcon>
+                <ListItemText primary="Admin Home" />
+                </ListItemButton>
+            </ListItem>  
+        </Link>
+        
+
+        
+
       </List>
       <Divider />
+
+      {/* 2nd list landlord */}
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+         {/* home */}
+        <Link to="/" >
+            <ListItem  disablePadding>
+                <ListItemButton>
+                <ListItemIcon>
+                    <CottageIcon />
+                </ListItemIcon>
+                <ListItemText primary="Landlord Home" />
+                </ListItemButton>
+            </ListItem>  
+        </Link>
+        
+
+        
+
       </List>
+      <Divider />
+
+      {/* 3rd list tenant */}
+      <List>
+         {/* home */}
+        <Link to="/" >
+            <ListItem  disablePadding>
+                <ListItemButton>
+                <ListItemIcon>
+                    <CottageIcon />
+                </ListItemIcon>
+                <ListItemText primary="House-Rent" />
+                </ListItemButton>
+            </ListItem>  
+        </Link>
+        
+
+        {/* test */}
+        <Link to="/apartments" >
+            <ListItem  disablePadding>
+                <ListItemButton>
+                <ListItemIcon>
+                    <HomeIcon />
+                </ListItemIcon>
+                <ListItemText primary="Apartments" />
+                </ListItemButton>
+            </ListItem>  
+        </Link>
+
+      </List>
+      <Divider />
+
+      {/* 4th list general category */}
+      <List>
+         {/* home */}
+        <Link to="/" >
+            <ListItem  disablePadding>
+                <ListItemButton>
+                <ListItemIcon>
+                    <CottageIcon />
+                </ListItemIcon>
+                <ListItemText primary="House-Rent" />
+                </ListItemButton>
+            </ListItem>  
+        </Link>
+        
+
+        {/* test */}
+        <Link to="/apartments" >
+            <ListItem  disablePadding>
+                <ListItemButton>
+                <ListItemIcon>
+                    <HomeIcon />
+                </ListItemIcon>
+                <ListItemText primary="Apartments" />
+                </ListItemButton>
+            </ListItem>  
+        </Link>
+
+      </List>
+
     </div>
   );
 
@@ -65,6 +143,7 @@ function DashboardPage(props) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
+      <Outlet></Outlet>
       <AppBar
         position="fixed"
         sx={{
@@ -125,18 +204,7 @@ function DashboardPage(props) {
       >
         <Toolbar />
         <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-          enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-          imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-          Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-          Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-          adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-          nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-          leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-          feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-          consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-          sapien faucibus et molestie ac.
+          
         </Typography>
         <Typography paragraph>
           Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper

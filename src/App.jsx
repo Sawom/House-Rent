@@ -18,6 +18,9 @@ import {
 import AuthProvider from "./pages/Auth/AuthProvider/AuthProvider";
 import PrivateRoute from "./pages/Auth/PrivateRoute/PrivateRoute";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
+import AdminHome from "./pages/DashboardPage/Admin/AdminHome/AdminHome";
+import LandlordHome from "./pages/DashboardPage/Landlord/LandlordHome/LandlordHome";
+import TenantHome from "./pages/DashboardPage/Tenant/TenantHome/TenantHome";
 const queryClient = new QueryClient();
 
 function App() {
@@ -37,14 +40,22 @@ function App() {
                   {/* dynamic route */}
                   <Route path="apartmentsinfo/:id" element={<PropertyInfo />} />
 
-                  {/* dashboard page */}
+                  {/* dashboard page , nested route */}
                   <Route path='/dashboard' element={ 
                     <PrivateRoute>
                       <DashboardPage></DashboardPage>
                     </PrivateRoute>
                    } > 
-                      {/* user home */}
-                      <Route> </Route>
+                      {/* admin home */}
+                      <Route path='adminhome' element={ <AdminHome></AdminHome> } > </Route>
+
+                      {/* landlord home */}
+                      <Route path='landlordhome' element={ <LandlordHome></LandlordHome> } > </Route>
+
+                      {/* tenant home */}
+                      <Route path='tenanthome' element={ <TenantHome></TenantHome> } > </Route>
+
+
                   </Route>
 
                   <Route path="/profile" element={<Profile />} />
