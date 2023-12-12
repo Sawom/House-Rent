@@ -22,6 +22,8 @@ import AdminHome from "./pages/DashboardPage/Admin/AdminHome/AdminHome";
 import LandlordHome from "./pages/DashboardPage/Landlord/LandlordHome/LandlordHome";
 import TenantHome from "./pages/DashboardPage/Tenant/TenantHome/TenantHome";
 import ManageUsers from "./pages/DashboardPage/Admin/ManageUsers/ManageUsers";
+import ManageBooking from "./pages/DashboardPage/Tenant/ManageBooking/ManageBooking";
+import ManageCart from "./pages/DashboardPage/Tenant/ManageCart/ManageCart";
 const queryClient = new QueryClient();
 
 function App() {
@@ -49,7 +51,7 @@ function App() {
                    } > 
                       {/* admin home */}
                       <Route path='adminhome' element={ <AdminHome></AdminHome> } > </Route>
-                      {/* manage users */}
+                      {/* admin: manage users */}
                       <Route path='manageusers' element={ <ManageUsers></ManageUsers> } ></Route>
 
                       {/* landlord home */}
@@ -57,8 +59,10 @@ function App() {
 
                       {/* tenant home */}
                       <Route path='tenanthome' element={ <TenantHome></TenantHome> } > </Route>
-
-
+                      {/* tenant: managebooking */}
+                      <Route path="managebooking" element={ <ManageBooking></ManageBooking> } ></Route>
+                      {/* tenant: managecart */}
+                      <Route path="managecart" element={ <ManageCart></ManageCart> } ></Route>
                   </Route>
 
                   <Route path="/profile" element={<Profile />} />

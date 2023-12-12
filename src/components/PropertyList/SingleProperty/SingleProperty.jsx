@@ -50,12 +50,12 @@ const SingleProperty = ({ propertyImg, delayTime, bgwhite, rentData }) => {
                         showConfirmButton: false,
                         timer: 1500
                   }) 
-
-            }
-            else{
-
-              Swal.fire({
-                title: 'Please login to add laptop in your cart',
+              }
+          } )
+      }
+      else{
+          Swal.fire({
+                title: 'Please login',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -66,11 +66,9 @@ const SingleProperty = ({ propertyImg, delayTime, bgwhite, rentData }) => {
                   navigate('/login', {state: {from: location}})
                 }
               })
-            }
+          }
 
-          } )
 
-      }
   }
 
   //*********** */ rent card
@@ -134,12 +132,12 @@ const SingleProperty = ({ propertyImg, delayTime, bgwhite, rentData }) => {
 
         {/* buttons */}
         <div className="p-2 d-flex " >
-          <Button onClick={ ()=> handleAddToCart(rentData) } variant="contained" color="success" className="mx-3" >
-            <small className="d-flex"> <ShoppingCartIcon></ShoppingCartIcon>  add cart </small> 
-          </Button>
-          <Button variant="contained" color="success" >
-            <small className="d-flex" ><BeenhereIcon></BeenhereIcon>  book now</small>  
-          </Button>
+          <button onClick={ ()=> handleAddToCart(rentData) } variant="contained" className="mx-3 p-2 text-white btn btn-outline-primary active" >
+            <small className="d-flex"> <ShoppingCartIcon></ShoppingCartIcon>  Add Cart </small> 
+          </button>
+          <button variant="contained" className="mx-3 p-2 text-white btn btn-outline-primary active">
+            <small className="d-flex" ><BeenhereIcon></BeenhereIcon>  Book Now</small>  
+          </button>
         </div>
       </div>
     </div>

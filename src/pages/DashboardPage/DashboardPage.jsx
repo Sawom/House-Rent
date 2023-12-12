@@ -19,7 +19,9 @@ import PropTypes from 'prop-types';
 import * as React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
-
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import BeenhereIcon from '@mui/icons-material/Beenhere';
+import Person3Icon from '@mui/icons-material/Person3';
 
 const drawerWidth = 240;
 
@@ -55,7 +57,7 @@ function DashboardPage(props) {
             <ListItem  disablePadding>
                 <ListItemButton>
                 <ListItemIcon>
-                    <CottageIcon />
+                    <Person3Icon />
                 </ListItemIcon>
                 <ListItemText primary="Manage Users" />
                 </ListItemButton>
@@ -68,7 +70,7 @@ function DashboardPage(props) {
 
       {/* 2nd list landlord */}
       <List>
-         {/* home */}
+         {/*landlord home */}
         <Link to="/dashboard/landlordhome" >
             <ListItem  disablePadding>
                 <ListItemButton>
@@ -88,7 +90,7 @@ function DashboardPage(props) {
 
       {/* 3rd list tenant */}
       <List>
-         {/* home */}
+         {/*tenant home */}
         <Link to="/dashboard/tenanthome" >
             <ListItem  disablePadding>
                 <ListItemButton>
@@ -100,8 +102,29 @@ function DashboardPage(props) {
             </ListItem>  
         </Link>
         
+        {/* manage booking */}
+        <Link to="/dashboard/managebooking" >
+            <ListItem  disablePadding>
+                <ListItemButton>
+                <ListItemIcon>
+                    <BeenhereIcon></BeenhereIcon>
+                </ListItemIcon>
+                <ListItemText primary="Manage Booking" />
+                </ListItemButton>
+            </ListItem>  
+        </Link>
 
-        
+        {/* manage cart */}
+        <Link to="/dashboard/managecart" >
+            <ListItem  disablePadding>
+                <ListItemButton>
+                <ListItemIcon>
+                    <ShoppingCartIcon></ShoppingCartIcon>
+                </ListItemIcon>
+                <ListItemText primary="Manage Cart" />
+                </ListItemButton>
+            </ListItem>  
+        </Link>
 
       </List>
       <Divider />
