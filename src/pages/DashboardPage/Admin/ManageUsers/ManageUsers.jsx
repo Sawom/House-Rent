@@ -1,16 +1,15 @@
-import React from 'react';
-import { useQuery } from '@tanstack/react-query';
+import DeleteIcon from '@mui/icons-material/Delete';
+import Person3Icon from '@mui/icons-material/Person3';
+import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
-import Person3Icon from '@mui/icons-material/Person3';
+import { useQuery } from '@tanstack/react-query';
+import React from 'react';
 import Swal from 'sweetalert2';
-
 
 const ManageUsers = () => {
     const {data: users = [], isLoading: loading, refetch } = useQuery({
@@ -72,7 +71,7 @@ const ManageUsers = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then( (result) =>{
                 if(result.isConfirmed){
-                    fetch(`https://ars-restaurant-db-production.up.railway.app/users/${user._id}`, {
+                    fetch(`http://localhost:5000/users/${user._id}`, {
                         method: 'DELETE'
                     } )
                     .then( res => res.json() )
@@ -99,8 +98,8 @@ const ManageUsers = () => {
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                 <TableRow>
-                    <TableCell>#</TableCell>
-                    <TableCell>Name </TableCell>
+                    <TableCell align="right">#</TableCell>
+                    <TableCell align="right">Name </TableCell>
                     <TableCell align="right">Email</TableCell>
                     <TableCell align="right">Phone</TableCell>
                     <TableCell align="right">Account Type</TableCell>
@@ -120,12 +119,17 @@ const ManageUsers = () => {
                         {/* user role */}
                         <TableCell align="right">
                             {
-                                user.role === 'admin' ? 'admin' : <button onClick={() => handleMakeAdmin(user)} className=" bg-blue-700
-                                    "> <Person3Icon></Person3Icon> </button>
+                                user.role === 'admin' ? 'admin' : <button onClick={() => handleMakeAdmin(user)} className="p-2 text-white" style={{backgroundColor: 'blue', borderRadius:'10px'}} >
+                                     <Person3Icon></Person3Icon> </button>
                             }
                              
                         </TableCell>
-                        <TableCell align="right"></TableCell>
+                        {/* delete button */}
+                        <TableCell align="right">
+                            <button onClick={() => handleDeleteUser(user)} className="p-2  text-white" 
+                            style={{backgroundColor: 'red', borderRadius:'10px'}} > <DeleteIcon></DeleteIcon>   
+                            </button>
+                        </TableCell>
                         
                     </TableRow>
                      )
