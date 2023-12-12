@@ -8,6 +8,7 @@ import eyeImg from "../../assets/images/eye_open.svg";
 import singupImg from "../../assets/images/signup-image.jpg";
 import useAuth from '../Auth/useAuth/useAuth';
 import classes from "./styles.module.css";
+import Swal from 'sweetalert2';
 
 const Signup = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -80,6 +81,32 @@ const Signup = () => {
         .then(result => {
             const user = result.user;
             console.log(user);
+
+            const saveUser = {name:name, email:email, phone:phone, type:type }
+            fetch('http://localhost:5000/users', {
+              method: 'POST',
+              headers:{
+                 'content-type': 'application/json'
+              },
+              body: JSON.stringify(saveUser)
+            })
+            .then( res => res.json() )
+            .then( (data)=>{
+
+                if(data.insertedId){
+                    Swal.fire({
+                            title: 'Now you are registered. Congratulations! Check your email to verify your email address.',
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            }
+                    })
+                }
+
+            } )
+
             setErrors('');
             verifyEmail();
             setUserName();
