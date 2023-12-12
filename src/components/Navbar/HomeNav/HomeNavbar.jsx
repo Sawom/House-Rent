@@ -131,7 +131,7 @@ const Navbar = () => {
             {/* login/logout */}
             {
               user?.email ? 
-              <div className="d-flex">
+              <div className="navbar-nav ms-auto">
                   <Link to="/dashboard" className="nav-item nav-link">
                     Dashboard
                   </Link>

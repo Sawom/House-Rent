@@ -17,7 +17,7 @@ const Board = () => {
        <Container className='mt-5 ' item sx={{ padding: 1 }} >
           <Grid  container  >
                 {
-                      rent.map( (rentData)=> <SingleProperty  
+                      rent.map( (rentData)=> <SingleProperty 
                             delayTime="0.3s" rentData={rentData} key={rentData._id} 
                       ></SingleProperty> )
                 }

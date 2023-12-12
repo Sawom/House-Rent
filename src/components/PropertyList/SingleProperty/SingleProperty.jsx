@@ -26,11 +26,11 @@ const SingleProperty = ({ propertyImg, delayTime, bgwhite, rentData }) => {
 
   //*********** */ rent card
   return (
-    <div
+    <div 
       className="col-lg-4 py-2 px-2 col-md-6 col-12 wow fadeInUp"
       data-wow-delay={delayTime} 
     >
-      <div
+      <div  
         className={`property-item rounded overflow-hidden `}
         style={conditionalStyles}
       >
