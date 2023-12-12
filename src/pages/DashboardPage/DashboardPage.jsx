@@ -50,7 +50,17 @@ function DashboardPage(props) {
             </ListItem>  
         </Link>
         
-
+        {/* manage users */}
+        <Link to="/dashboard/manageusers" >
+            <ListItem  disablePadding>
+                <ListItemButton>
+                <ListItemIcon>
+                    <CottageIcon />
+                </ListItemIcon>
+                <ListItemText primary="Manage Users" />
+                </ListItemButton>
+            </ListItem>  
+        </Link>
         
 
       </List>
