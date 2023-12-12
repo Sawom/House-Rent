@@ -1,6 +1,11 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../../pages/Auth/useAuth/useAuth";
+import { Button } from "@mui/material";
+import Stack from '@mui/material/Stack';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import BeenhereIcon from '@mui/icons-material/Beenhere';
+import Swal from "sweetalert2";
 
 const SingleProperty = ({ propertyImg, delayTime, bgwhite, rentData }) => {
   const { _id, code, name, category, gender, propertytype, balcony,
@@ -23,6 +28,50 @@ const SingleProperty = ({ propertyImg, delayTime, bgwhite, rentData }) => {
     borderBottom: "1px solid rgba(240, 240, 240, 1)",
     backgroundColor: bgwhite === "false" ? "var(--light)" : "white",
   };
+
+  const handleAddToCart = (rentData) =>{
+      if(user && user.email){
+          const rentItem = {rentItemId: _id, code, name,img1,rent,email: user.email }
+          fetch('http://localhost:5000/carts', {
+            method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(rentItem)
+          })
+          .then(res => res.json())
+          .then( (data)=>{
+            if(data.insertedId){
+              refetch();
+              Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Food added to cart',
+                        showConfirmButton: false,
+                        timer: 1500
+                  }) 
+
+            }
+            else{
+
+              Swal.fire({
+                title: 'Please login to add laptop in your cart',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Login now!'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  navigate('/login', {state: {from: location}})
+                }
+              })
+            }
+
+          } )
+
+      }
+  }
 
   //*********** */ rent card
   return (
@@ -68,15 +117,29 @@ const SingleProperty = ({ propertyImg, delayTime, bgwhite, rentData }) => {
 
         </div>
         <div className="d-flex border-top">
+          {/* balcony */}
           <small className="flex-fill text-center border-end py-2">
             <i className="fa fa-ruler-combined text-primary me-2"></i> {balcony} balcony
           </small>
+          {/* bedroom */}
           <small className="flex-fill text-center border-end py-2">
             <i className="fa fa-bed text-primary me-2"></i> {bedroom} Bed
           </small>
+          {/* bathroom */}
           <small className="flex-fill text-center py-2">
             <i className="fa fa-bath text-primary me-2"></i> {bathroom} Bath
           </small>
+
+        </div>
+
+        {/* buttons */}
+        <div className="p-2 d-flex" >
+          <Button onClick={ ()=> handleAddToCart(rentData) } variant="contained" color="success" className="mx-3" >
+            <small> <ShoppingCartIcon></ShoppingCartIcon>  add to cart </small> 
+          </Button>
+          <Button variant="contained" color="success" className="mx-3" >
+            <small><BeenhereIcon></BeenhereIcon>  book now</small>  
+          </Button>
         </div>
       </div>
     </div>
