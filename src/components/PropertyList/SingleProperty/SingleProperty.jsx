@@ -42,11 +42,11 @@ const SingleProperty = ({ propertyImg, delayTime, bgwhite, rentData }) => {
           .then(res => res.json())
           .then( (data)=>{
             if(data.insertedId){
-              refetch();
+              // refetch(); use cart korar pore
               Swal.fire({
                         position: 'top-end',
                         icon: 'success',
-                        title: 'Food added to cart',
+                        title: 'Added to cart',
                         showConfirmButton: false,
                         timer: 1500
                   }) 
@@ -133,12 +133,12 @@ const SingleProperty = ({ propertyImg, delayTime, bgwhite, rentData }) => {
         </div>
 
         {/* buttons */}
-        <div className="p-2 d-flex" >
+        <div className="p-2 d-flex " >
           <Button onClick={ ()=> handleAddToCart(rentData) } variant="contained" color="success" className="mx-3" >
-            <small> <ShoppingCartIcon></ShoppingCartIcon>  add to cart </small> 
+            <small className="d-flex"> <ShoppingCartIcon></ShoppingCartIcon>  add cart </small> 
           </Button>
-          <Button variant="contained" color="success" className="mx-3" >
-            <small><BeenhereIcon></BeenhereIcon>  book now</small>  
+          <Button variant="contained" color="success" >
+            <small className="d-flex" ><BeenhereIcon></BeenhereIcon>  book now</small>  
           </Button>
         </div>
       </div>
