@@ -7,6 +7,7 @@ import eyeImg from "../../assets/images/eye_open.svg";
 import singinImg from "../../assets/images/signin-image.jpg";
 import classes from "./styles.module.css";
 import useAuth from "./useAuth/useAuth";
+import { Button } from '@mui/material';
 
 const Login = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -113,6 +114,7 @@ const Login = () => {
             <a href="/signup" className={classes.signup_image_link}>
               Create an account
             </a>
+            <span> Forgot password? <Button style={{color:'blue', fontWeight:'bold'}} onClick={resetPassword} >Reset Password</Button> </span>
           </div>
 
           <div className={classes.signin_form}>

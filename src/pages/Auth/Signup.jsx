@@ -3,16 +3,17 @@ import Select from '@mui/material/Select';
 import { createUserWithEmailAndPassword, getAuth, sendEmailVerification, updateProfile } from "firebase/auth";
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import notEyeImg from "../../assets/images/eye_closed.svg";
 import eyeImg from "../../assets/images/eye_open.svg";
 import singupImg from "../../assets/images/signup-image.jpg";
 import useAuth from '../Auth/useAuth/useAuth';
 import classes from "./styles.module.css";
-import Swal from 'sweetalert2';
 
 const Signup = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
@@ -32,6 +33,11 @@ const Signup = () => {
   // name
   const handleName = event =>{
       setName(event.target.value);
+  }
+
+  // address
+  const handleAddress = event =>{
+    setAddress(event.target.value)
   }
 
   // email
@@ -82,7 +88,7 @@ const Signup = () => {
             const user = result.user;
             console.log(user);
 
-            const saveUser = {name:name, email:email, phone:phone, type:type }
+            const saveUser = {name:name, email:email, phone:phone, type:type, address:address }
             fetch('http://localhost:5000/users', {
               method: 'POST',
               headers:{
@@ -176,6 +182,30 @@ const Signup = () => {
                     placeholder="Your Name"
                     value={name}
                     onChange={handleName} required
+                  />
+
+                </div>
+                {errors.name && (
+                  <p className={classes.error_message}>{errors.name}</p>
+                )}
+              </div>
+
+              {/* address */}
+              <div className={classes.form_control}>
+                <div className={classes.input_group}>
+                  <label htmlFor="address">
+                    <i
+                      className={`${classes.zmdi} zmdi zmdi-pin-drop material-icons-name`}
+                    ></i>
+                  </label>
+
+                  <input
+                    type="text"
+                    name="address"
+                    id="address"
+                    placeholder="Your Address"
+                    value={address}
+                    onChange={handleAddress} required
                   />
 
                 </div>
