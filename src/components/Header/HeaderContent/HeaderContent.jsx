@@ -8,8 +8,7 @@ const HeaderContent = () => {
         Your Family
       </h1>
       <p className="animated fadeIn mb-4 pb-2">
-        Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd
-        rebum ipsum et diam justo clita et kasd rebum sea elitr.
+        Welcome to our online platform, where the search for your ideal home begins – a place where comfort, convenience, and family come together seamlessly. 
       </p>
       <a
         href="/addproperty"

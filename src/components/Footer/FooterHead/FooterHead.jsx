@@ -15,15 +15,15 @@ const FooterHead = () => {
       <div className="row g-5">
         <div className="col-lg-3 col-md-6">
           <h5 className="text-white mb-4">Get In Touch</h5>
-          <p className="mb-2">
-            <i className="fa fa-map-marker-alt me-3"></i>123 Street, New York,
-            USA
+          <p className="mb-2 text-white">
+            <i className="fa fa-map-marker-alt me-3 "></i>123/A Dilkusha, Motijheel-1000,
+            Dhaka, Bangladesh
           </p>
-          <p className="mb-2">
-            <i className="fa fa-phone-alt me-3"></i>+012 345 67890
+          <p className="mb-2 text-white">
+            <i className="fa fa-phone-alt me-3"></i>+880 1515000111
           </p>
-          <p className="mb-2">
-            <i className="fa fa-envelope me-3"></i>info@example.com
+          <p className="mb-2 text-white">
+            <i className="fa fa-envelope me-3"></i>rent@gmail.com
           </p>
           <div className="d-flex pt-2">
             <a className="btn btn-outline-light btn-social" href="">
@@ -40,21 +40,18 @@ const FooterHead = () => {
             </a>
           </div>
         </div>
-        <div className="col-lg-3 col-md-6">
+        <div className="col-lg-3 col-md-6 ">
           <h5 className="text-white mb-4">Quick Links</h5>
-          <a className="btn btn-link text-white-50" href="#">
+          <a className="btn btn-link text-white" href="#">
             Home
           </a>
-          <a className="btn btn-link text-white-50" href="#search">
+          <a className="btn btn-link text-white" href="#search">
             Search
           </a>
-          <a className="btn btn-link text-white-50" href="#category">
-            Category
-          </a>
-          <a className="btn btn-link text-white-50" href="#propertylist">
+          <a className="btn btn-link text-white" href="#propertylist">
             Property List
           </a>
-          <a className="btn btn-link text-white-50" href="#Testimonial">
+          <a className="btn btn-link text-white" href="#Testimonial">
             Testimonial
           </a>
         </div>
