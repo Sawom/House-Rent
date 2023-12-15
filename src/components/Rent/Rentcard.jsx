@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Rentcard = ({delayTime, bgwhite,recentData}) => {
+const Rentcard = ({delayTime, bgwhite, recentData}) => {
     const { _id, code, name, category, gender, propertytype, balcony,
      bedroom, bathroom, floor, division,  district, thana, availablefrom, rent, summary, addedby, img1, img2  } = recentData;
 
@@ -10,8 +10,6 @@ const Rentcard = ({delayTime, bgwhite,recentData}) => {
         borderBottom: "1px solid rgba(240, 240, 240, 1)",
         backgroundColor: bgwhite === "false" ? "var(--light)" : "white",
     };
-
-
 
     return (
         <div 

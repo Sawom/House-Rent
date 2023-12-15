@@ -13,18 +13,15 @@ const LoadRent = () => {
     })
 
     return (
-        <div id="content" className="">
-            {/* load recent data */}
-            <Container className='mt-5 ' item sx={{ padding: 1 }} >
-                <Grid  container  >
-                      {
+        <div id="content" className="mx-auto">
+            {/* load 6 recent data */}
+            <Grid  container className='mt-5 ' item sx={{ padding: 1 }} >
+                    {
                         recent.map( recentData => <Rentcard
                             delayTime="0.3s" key={recentData._id} recentData={recentData}
                         ></Rentcard> )
-                      }  
-                    
-                </Grid>
-            </Container>
+                    }    
+            </Grid>
         </div>
     );
 };

@@ -11,7 +11,7 @@ const HeaderContent = () => {
         Welcome to our online platform, where the search for your ideal home begins – a place where comfort, convenience, and family come together seamlessly. 
       </p>
       <a
-        href="/addproperty"
+        href=""
         className="btn btn-primary py-3 px-5 me-3 animated fadeIn"
       >
         Get Started

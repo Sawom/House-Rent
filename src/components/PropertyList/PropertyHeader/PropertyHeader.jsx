@@ -7,6 +7,7 @@ const PropertyHeader = () => {
     <div className="row g-0 gx-5 align-items-end">
       <PropertyHeaderLeft />
       <PropertyHeaderRight />
+      
     </div>
   );
 };
