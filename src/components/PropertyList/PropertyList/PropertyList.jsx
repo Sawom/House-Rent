@@ -8,21 +8,24 @@ import property6 from "../../../assets/images/property-6.jpg";
 import PropertyHeader from "../PropertyHeader/PropertyHeader";
 import SingleProperty from "../SingleProperty/SingleProperty";
 import "./PropertyList.css";
+import LoadRent from "../../Rent/LoadRent";
 
 const PropertyList = ({bgwhite}) => {
   return (
     <div id="propertylist" className="container-xxl py-5">
       <div className="container">
-        <PropertyHeader />
+        {/* header */}
+        <div
+        className="text-start mx-auto mb-5 wow slideInLeft"
+        data-wow-delay="0.1s"
+      >
+        <h1 className="mb-3">Recent Apartments</h1>
+      </div>
+        {/* <PropertyHeader /> */}
         <div className="tab-content">
           <div id="tab-1" className="tab-pane fade show p-0 active">
             <div className="row g-4">
-              {/* <SingleProperty delayTime="0.1s" />
-              <SingleProperty delayTime="0.3s" />
-              <SingleProperty  delayTime="0.5s" />
-              <SingleProperty  delayTime="0.1s" />
-              <SingleProperty  delayTime="0.3s" />
-              <SingleProperty  delayTime="0.5s" /> */}
+              <LoadRent></LoadRent>
             </div>
           </div>
         </div>

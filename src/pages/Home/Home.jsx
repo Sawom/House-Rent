@@ -12,6 +12,7 @@ const Home = () => {
       <Search />
       {/* don't need to update Categories component just leave it as it is */}
       {/* <Categories /> */}
+      
       <PropertyList bgwhite="false" />
       <Testimonial />
     </div>
