@@ -154,6 +154,34 @@ const PropertyDetails = ({ images }) => {
                 </div>
               </div>
             </div>
+
+            {/* Landlord information */}
+            <div className="col-sm-12 mb-3">
+              <div
+                className="card bg-white  rounded"
+                style={{
+                  boxShadow: "0 1px 2px rgba(0, 0, 0, 0.4)",
+                  borderBottom: "1px solid rgba(240, 240, 240, 1)",
+                }}
+              >
+                <div className="card-header bg-primary text-white">
+                  About Landlord
+                </div>
+                <div className="card-body">
+                  <dl className="row">
+                    <dt className="col-5 col-md-4">Owner: </dt>
+                    <dd className="col-7 col-md-8"> {appart.addedby} </dd>
+
+                    <dt className="col-5 col-md-4">Phone:</dt>
+                    <dd className="col-7 col-md-8"> {appart.phone} </dd>
+
+                    <dt className="col-5 col-md-4">Email:</dt>
+                    <dd className="col-7 col-md-8"> {appart.email} </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
