@@ -48,31 +48,32 @@ const ManageCart = () => {
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                 <TableRow>
-                    <TableCell align="right">#</TableCell>
-                    <TableCell align="right">Apartment </TableCell>
-                    <TableCell align="right">Code</TableCell>
-                    <TableCell align="right">Announcement</TableCell>
-                    <TableCell align="right">Rent/Month</TableCell>
-                    <TableCell align="right">Action</TableCell>
+                    <TableCell align="">#</TableCell>
+                    <TableCell align="">Apartment </TableCell>
+                    <TableCell align="">Code</TableCell>
+                    <TableCell align="">Announcement</TableCell>
+                    <TableCell align="">Rent/Month</TableCell>
+                    <TableCell align="">Action</TableCell>
                 </TableRow>
                 </TableHead>
                 <TableBody>
                     {
                         cart.map( (item, index)=> <TableRow  key={item._id} >
-                            <TableCell align="right"> {index + 1} </TableCell>
-                            <TableCell align="right">
+                            <TableCell align=""> {index + 1} </TableCell>
+                            <TableCell align="">
                                 <img style={{width:'50px'}} src={item.img1} alt="" />
                             </TableCell>
-                            <TableCell align="right">{item.code}</TableCell>
-                            <TableCell align="left">{item.name}</TableCell>
+                            <TableCell align="">{item.code}</TableCell>
+                            <TableCell align="">{item.name}</TableCell>
                             <TableCell align="">{item.rent} BDT</TableCell>
-                            <TableCell align="right">
+                            <TableCell align="">
                                 <button onClick={() => handleDelete(item)} className="p-2  text-white" 
                                     style={{backgroundColor: 'red', borderRadius:'10px'}} > <DeleteIcon></DeleteIcon>   
                                 </button>
                             </TableCell>
                         </TableRow> )
                     }
+
                 </TableBody>
             </Table>
         </TableContainer>

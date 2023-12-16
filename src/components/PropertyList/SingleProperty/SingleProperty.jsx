@@ -1,11 +1,8 @@
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import useAuth from "../../../pages/Auth/useAuth/useAuth";
-import { Button } from "@mui/material";
-import Stack from '@mui/material/Stack';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import BeenhereIcon from '@mui/icons-material/Beenhere';
 import Swal from "sweetalert2";
+import useAuth from "../../../pages/Auth/useAuth/useAuth";
 
 const SingleProperty = ({ propertyImg, delayTime, bgwhite, rentData }) => {
   const { _id, code, name, category, gender, propertytype, balcony,
@@ -18,9 +15,27 @@ const SingleProperty = ({ propertyImg, delayTime, bgwhite, rentData }) => {
 
   // dynamic route url
   let url = `/apartmentsinfo/${_id}` ;
-    const handleView = ()=>{
-        navigate(url);
+  
+  const handleView = ()=>{
+    if(user && user.email){
+      navigate(url);
     }
+    else{
+        Swal.fire({
+                title: 'Please login',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Login now!'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  navigate('/login', {state: {from: location}})
+                }
+        })
+    }
+        
+  }
   
   // Conditionally update styles based on bgwhite
   const conditionalStyles = {
@@ -42,7 +57,7 @@ const SingleProperty = ({ propertyImg, delayTime, bgwhite, rentData }) => {
           .then(res => res.json())
           .then( (data)=>{
             if(data.insertedId){
-              // refetch(); use cart korar pore
+              // refetch(); 
               Swal.fire({
                         position: 'top-end',
                         icon: 'success',
@@ -131,14 +146,12 @@ const SingleProperty = ({ propertyImg, delayTime, bgwhite, rentData }) => {
         </div>
 
         {/* buttons */}
-        <div className="p-2 d-flex " >
+        <div className="p-2 " >
           <button onClick={ ()=> handleAddToCart(rentData) } variant="contained" className="mx-3 p-2 text-white btn btn-outline-primary active" >
-            <small className="d-flex"> <ShoppingCartIcon></ShoppingCartIcon>  Add Cart </small> 
-          </button>
-          <button variant="contained" className="mx-3 p-2 text-white btn btn-outline-primary active">
-            <small className="d-flex" ><BeenhereIcon></BeenhereIcon>  Book Now</small>  
+            <small  className="d-flex"> <ShoppingCartIcon></ShoppingCartIcon>  Add Cart </small> 
           </button>
         </div>
+
       </div>
     </div>
   );
