@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {GoogleAuthProvider, getAuth, onAuthStateChanged, signInWithPopup, signOut, }  from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut, }  from "firebase/auth";
 import initializeFirebase from '../Firebase/firebase.init';
 import axios from 'axios';
 initializeFirebase();
