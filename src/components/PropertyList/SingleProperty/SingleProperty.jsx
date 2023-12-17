@@ -146,13 +146,14 @@ const SingleProperty = ({ propertyImg, delayTime, bgwhite, rentData }) => {
         </div>
 
         {/* buttons */}
-        <div className="p-2 " >
-          <button onClick={ ()=> handleAddToCart(rentData) } variant="contained" className="mx-3 p-2 text-white btn btn-outline-primary active" >
-            <small  className="d-flex"> <ShoppingCartIcon></ShoppingCartIcon>  Add Cart </small> 
-          </button>
-        </div>
-
+        <br />
+        <button  onClick={ ()=> handleAddToCart(rentData) } variant="contained" className="mx-3 p-2 text-white btn btn-outline-primary active" >
+            <small className="d-flex"> <ShoppingCartIcon></ShoppingCartIcon>  Add To Cart </small> 
+        </button>
+        
+        <br /> <br />
       </div>
+      
     </div>
   );
 };

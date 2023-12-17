@@ -22,10 +22,26 @@ import HomeIcon from '@mui/icons-material/Home';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import BeenhereIcon from '@mui/icons-material/Beenhere';
 import Person3Icon from '@mui/icons-material/Person3';
+import useAuth from '../Auth/useAuth/useAuth';
+import useAdmin from '../../Hooks/useAdmin';
+import { useQuery } from '@tanstack/react-query';
 
 const drawerWidth = 240;
 
 function DashboardPage(props) {
+  const [isAdmin] = useAdmin();
+  const {user, loading} = useAuth();
+
+  const {data: users = [], refetch } = useQuery({
+        queryKey: ['users'],
+        queryFn: async() =>{
+            const res = await fetch('http://localhost:5000/users');
+            return res.json()
+        }
+  })
+
+  console.log('user type =',users.type)
+
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 

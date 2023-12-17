@@ -24,6 +24,7 @@ import TenantHome from "./pages/DashboardPage/Tenant/TenantHome/TenantHome";
 import ManageUsers from "./pages/DashboardPage/Admin/ManageUsers/ManageUsers";
 import ManageBooking from "./pages/DashboardPage/Tenant/ManageBooking/ManageBooking";
 import ManageCart from "./pages/DashboardPage/Tenant/ManageCart/ManageCart";
+import BookingPage from "./pages/BookingPage/BookingPage";
 const queryClient = new QueryClient();
 
 function App() {
@@ -42,8 +43,15 @@ function App() {
                   <Route path="/apartments" element={<Dashboard />} />
                   {/* dynamic route */}
                   <Route path="apartmentsinfo/:id" element={<PropertyInfo />} />
+                  
+                  {/* booking page: private route */}
+                  <Route path="booking/:id" element={ 
+                    <PrivateRoute>
+                      <BookingPage></BookingPage>
+                    </PrivateRoute>
+                  } ></Route>
 
-                  {/* dashboard page , nested route */}
+                  {/* dashboard page , private route, nested route */}
                   <Route path='/dashboard' element={ 
                     <PrivateRoute>
                       <DashboardPage></DashboardPage>

@@ -1,6 +1,7 @@
 import { Typography } from "@mui/joy";
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import BeenhereIcon from '@mui/icons-material/Beenhere';
 import ImageCarousel from "../../ImageCarousel/ImageCarousel";
 
 const PropertyDetails = ({ images }) => {
@@ -12,6 +13,14 @@ const PropertyDetails = ({ images }) => {
         .then(data => data.json())
         .then( data => setAppart(data))
     }, [] )
+
+    // booking url
+    let navigate = useNavigate();
+    // dynamic booking url
+    const url = `/booking/${appart._id}`;
+    const handleBooking = ()=>{
+      navigate(url);
+    }
 
 
   return (
@@ -38,9 +47,16 @@ const PropertyDetails = ({ images }) => {
                 }}
               >
                 <ImageCarousel images={images} />
+                <br />
+                <button onClick={handleBooking} variant="contained" className="px-3 text-white btn btn-outline-primary active" >
+                    <small className="d-flex"> <BeenhereIcon></BeenhereIcon>  Book Now </small> 
+                </button>
+                
               </div>
             </div>
           </div>
+          
+          {/* booking */}
           <div className="row mb-3">
             {/* <div className="col">
               <div
@@ -50,10 +66,11 @@ const PropertyDetails = ({ images }) => {
                   borderBottom: "1px solid rgba(240, 240, 240, 1)",
                 }}
               >
-                video
+                
               </div>
             </div> */}
           </div>
+
         </div>
         <div className="col-md-6 " style={{ padding: "0 10px 0 0px" }}>
           <div className="row">

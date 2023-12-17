@@ -124,9 +124,7 @@ const Navbar = () => {
             <Link to="/profile" className="nav-item nav-link">
               Profile
             </Link>
-            <Link to="/signup" className="nav-item nav-link">
-              Signup
-            </Link>
+            
 
             {/* login/logout */}
             {
@@ -138,9 +136,15 @@ const Navbar = () => {
                   <Button className="nav-item nav-link logOut" onClick={logoutFunction} >Logout</Button>
               </div>
               :
-              <Link to="/login" className="nav-item nav-link">
-                Login
-              </Link>
+              <div className="navbar-nav ms-auto">
+                <Link to="/signup" className="nav-item nav-link">
+                  Signup
+                </Link>
+                <Link to="/login" className="nav-item nav-link">
+                  Login
+                </Link>
+              </div>
+              
             }
             
           </div>
