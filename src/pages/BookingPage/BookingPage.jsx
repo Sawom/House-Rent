@@ -3,15 +3,17 @@ import useAuth from '../Auth/useAuth/useAuth';
 import { useFormAction, useParams } from 'react-router-dom';
 import HomeNavbar from '../../components/Navbar/HomeNav/HomeNavbar';
 import { FormLabel, Grid } from '@mui/joy';
-import { Paper } from '@mui/material';
+import { useForm } from 'react-hook-form';
 import classes from "../Auth/styles.module.css";
+import BeenhereIcon from '@mui/icons-material/Beenhere';
 
 const BookingPage = () => {
     const {user} = useAuth();
     const {id} = useParams();
     const [booking, setBooking] = useState({});
-    const { register, handleSubmit, reset } = useFormAction();
+    const { register, handleSubmit, reset } = useForm();
     const [errors, setErrors] = useState("");
+
 
     // data load
     useEffect( ()=>{
@@ -20,7 +22,26 @@ const BookingPage = () => {
         .then(data => setBooking(data));
     } , [])
 
-    // add booking
+    // add booking (later)
+    const onSubmit = (data) =>{
+        const formData = new FormData();
+        const {name, email, address, code, model, price} = data;
+        const newData = {name, email, address, code, model,price: parseFloat(price)}
+
+        axios.post('http://localhost:5000/booking',newData)
+        .then(data =>{
+            if(data.data.insertedId){
+                reset();
+                Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Added successfully!',
+                            showConfirmButton: false,
+                            timer: 1500
+                    })
+            }
+        })
+    }
 
     return (
         <div >
@@ -34,10 +55,7 @@ const BookingPage = () => {
                     
                     {/* First Grid image */}
                     <Grid item xs={12} sm={12} md={6}>
-                    
-                        {/* Your content for the first grid item */}
-                        Example: <div>Content for the first grid item</div>
-                    
+                        <img style={{width:'80%'}} src={booking.img1} alt="" />
                     </Grid>
 
                     {/* Second Grid rest form */}
@@ -198,6 +216,10 @@ const BookingPage = () => {
                                 <p className={classes.error_message}>{errors.name}</p>
                                 )}
                             </div>
+
+                            <button variant="contained" className="px-3 text-white btn btn-outline-primary active" >
+                                <small className="d-flex"> <BeenhereIcon></BeenhereIcon>  Book Now </small> 
+                            </button>
 
                         </form>
                     </Grid>
