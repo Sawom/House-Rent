@@ -62,7 +62,7 @@ const BookingPage = () => {
 
                     {/* Second Grid rest form */}
                     <Grid item xs={12} sm={12} md={6}>
-                        <form onSubmit={handleSubmit(onSubmit)} action="" className={classes.register_form} >
+                        <form onSubmit={handleSubmit(onSubmit)} className={classes.register_form} >
                             {/* name */}
                             <div className={classes.form_control}>
                                 <div className={classes.input_group}>
@@ -157,7 +157,7 @@ const BookingPage = () => {
 
                                 <input
                                     type="text"
-                                    name="name"
+                                    name="announce"
                                     id="name"
                                     placeholder="Announcement"
                                     {...register("announcement", { required: true })} readOnly
@@ -184,7 +184,7 @@ const BookingPage = () => {
 
                                 <input
                                     type="text"
-                                    name="name"
+                                    name="rent"
                                     id="name"
                                     placeholder="Rent/month"
                                     {...register("rent", { required: true })} readOnly

@@ -98,28 +98,28 @@ const ManageUsers = () => {
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                 <TableRow>
-                    <TableCell align="right">#</TableCell>
-                    <TableCell align="right">Name </TableCell>
-                    <TableCell align="right">Email</TableCell>
-                    <TableCell align="right">Address</TableCell>
-                    <TableCell align="right">Phone</TableCell>
-                    <TableCell align="right">Account Type</TableCell>
-                    <TableCell align="right">Role</TableCell>
-                    <TableCell align="right">Action</TableCell>
+                    <TableCell >#</TableCell>
+                    <TableCell >Name </TableCell>
+                    <TableCell >Email</TableCell>
+                    <TableCell >Address</TableCell>
+                    <TableCell >Phone</TableCell>
+                    <TableCell >Account Type</TableCell>
+                    <TableCell >Role</TableCell>
+                    <TableCell >Action</TableCell>
                 </TableRow>
                 </TableHead>
                 <TableBody>
                 
                 {
                     users.map( (user, index) =>  <TableRow key={user._id}  >
-                        <TableCell align="right"> {index + 1} </TableCell>
-                        <TableCell align="right">{user.name}</TableCell>
-                        <TableCell align="right">{user.email}</TableCell>
-                        <TableCell align="right">{user.address}</TableCell>
-                        <TableCell align="right">{user.phone}</TableCell>
-                        <TableCell align="right">{user.type}</TableCell>
+                        <TableCell > {index + 1} </TableCell>
+                        <TableCell >{user.name}</TableCell>
+                        <TableCell >{user.email}</TableCell>
+                        <TableCell >{user.address}</TableCell>
+                        <TableCell >{user.phone}</TableCell>
+                        <TableCell >{user.type}</TableCell>
                         {/* user role */}
-                        <TableCell align="right">
+                        <TableCell >
                             {
                                 user.role === 'admin' ? 'admin' : <button onClick={() => handleMakeAdmin(user)} className="p-2 text-white" style={{backgroundColor: 'blue', borderRadius:'10px'}} >
                                      <Person3Icon></Person3Icon> </button>
@@ -127,7 +127,7 @@ const ManageUsers = () => {
                              
                         </TableCell>
                         {/* delete button */}
-                        <TableCell align="right">
+                        <TableCell >
                             <button onClick={() => handleDeleteUser(user)} className="p-2  text-white" 
                             style={{backgroundColor: 'red', borderRadius:'10px'}} > <DeleteIcon></DeleteIcon>   
                             </button>

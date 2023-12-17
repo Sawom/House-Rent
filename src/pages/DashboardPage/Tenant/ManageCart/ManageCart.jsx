@@ -48,12 +48,12 @@ const ManageCart = () => {
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                 <TableRow>
-                    <TableCell align="">#</TableCell>
-                    <TableCell align="">Apartment </TableCell>
-                    <TableCell align="">Code</TableCell>
-                    <TableCell align="">Announcement</TableCell>
-                    <TableCell align="">Rent/Month</TableCell>
-                    <TableCell align="">Action</TableCell>
+                    <TableCell >#</TableCell>
+                    <TableCell >Apartment </TableCell>
+                    <TableCell >Code</TableCell>
+                    <TableCell >Announcement</TableCell>
+                    <TableCell >Rent/Month</TableCell>
+                    <TableCell >Action</TableCell>
                 </TableRow>
                 </TableHead>
                 <TableBody>
@@ -63,10 +63,10 @@ const ManageCart = () => {
                             <TableCell align="">
                                 <img style={{width:'50px'}} src={item.img1} alt="" />
                             </TableCell>
-                            <TableCell align="">{item.code}</TableCell>
-                            <TableCell align="">{item.name}</TableCell>
-                            <TableCell align="">{item.rent} BDT</TableCell>
-                            <TableCell align="">
+                            <TableCell >{item.code}</TableCell>
+                            <TableCell >{item.name}</TableCell>
+                            <TableCell >{item.rent} BDT</TableCell>
+                            <TableCell >
                                 <button onClick={() => handleDelete(item)} className="p-2  text-white" 
                                     style={{backgroundColor: 'red', borderRadius:'10px'}} > <DeleteIcon></DeleteIcon>   
                                 </button>
