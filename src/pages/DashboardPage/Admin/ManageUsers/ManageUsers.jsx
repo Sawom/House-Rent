@@ -101,6 +101,7 @@ const ManageUsers = () => {
                     <TableCell align="right">#</TableCell>
                     <TableCell align="right">Name </TableCell>
                     <TableCell align="right">Email</TableCell>
+                    <TableCell align="right">Address</TableCell>
                     <TableCell align="right">Phone</TableCell>
                     <TableCell align="right">Account Type</TableCell>
                     <TableCell align="right">Role</TableCell>
@@ -114,6 +115,7 @@ const ManageUsers = () => {
                         <TableCell align="right"> {index + 1} </TableCell>
                         <TableCell align="right">{user.name}</TableCell>
                         <TableCell align="right">{user.email}</TableCell>
+                        <TableCell align="right">{user.address}</TableCell>
                         <TableCell align="right">{user.phone}</TableCell>
                         <TableCell align="right">{user.type}</TableCell>
                         {/* user role */}

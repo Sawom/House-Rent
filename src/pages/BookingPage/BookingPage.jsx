@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import useAuth from '../Auth/useAuth/useAuth';
-import { useFormAction, useParams } from 'react-router-dom';
-import HomeNavbar from '../../components/Navbar/HomeNav/HomeNavbar';
-import { FormLabel, Grid } from '@mui/joy';
-import { useForm } from 'react-hook-form';
-import classes from "../Auth/styles.module.css";
 import BeenhereIcon from '@mui/icons-material/Beenhere';
+import { FormLabel, Grid } from '@mui/joy';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import HomeNavbar from '../../components/Navbar/HomeNav/HomeNavbar';
+import classes from "../Auth/styles.module.css";
+import useAuth from '../Auth/useAuth/useAuth';
 
 const BookingPage = () => {
     const {user} = useAuth();
@@ -22,11 +24,11 @@ const BookingPage = () => {
         .then(data => setBooking(data));
     } , [])
 
-    // add booking (later)
+    // add booking
     const onSubmit = (data) =>{
         const formData = new FormData();
-        const {name, email, address, code, model, price} = data;
-        const newData = {name, email, address, code, model,price: parseFloat(price)}
+        const {name,email,code,announcement,rent} = data;
+        const newData = {name,email,code,announcement,rent: parseFloat(rent)}
 
         axios.post('http://localhost:5000/booking',newData)
         .then(data =>{
@@ -35,7 +37,7 @@ const BookingPage = () => {
                 Swal.fire({
                             position: 'top-end',
                             icon: 'success',
-                            title: 'Added successfully!',
+                            title: 'Booking successfully!',
                             showConfirmButton: false,
                             timer: 1500
                     })
@@ -60,7 +62,7 @@ const BookingPage = () => {
 
                     {/* Second Grid rest form */}
                     <Grid item xs={12} sm={12} md={6}>
-                        <form action="" className={classes.register_form} >
+                        <form onSubmit={handleSubmit(onSubmit)} action="" className={classes.register_form} >
                             {/* name */}
                             <div className={classes.form_control}>
                                 <div className={classes.input_group}>
@@ -78,7 +80,8 @@ const BookingPage = () => {
                                     name="name"
                                     id="name"
                                     placeholder="Your Name"
-                                    required
+                                    {...register("name", { required: true })} readOnly
+                                    defaultValue={user.displayName} 
                                 />
 
                                 </div>
@@ -102,39 +105,13 @@ const BookingPage = () => {
                                     name="email"
                                     id="email"
                                     placeholder="Your Email"
-                                    
-                                    required
+                                    {...register("email", { required: true })} readOnly 
+                                    defaultValue={user.email} 
                                 />
 
                                 </div>
                                 {errors.email && (
                                 <p className={classes.error_message}>{errors.email}</p>
-                                )}
-                            </div>
-
-                            {/* address */}
-                            <div className={classes.form_control}>
-                                <div className={classes.input_group}>
-                                <label htmlFor="address">
-                                    <span className='d-flex mx-2'>
-                                        <i
-                                        className={`${classes.zmdi} zmdi zmdi-pin-drop material-icons-name`}
-                                        ></i>
-                                        <FormLabel>Address:</FormLabel>
-                                    </span>
-                                </label>
-
-                                <input
-                                    type="text"
-                                    name="address"
-                                    id="address"
-                                    placeholder="Your Address"
-                                    required
-                                />
-
-                                </div>
-                                {errors.name && (
-                                <p className={classes.error_message}>{errors.name}</p>
                                 )}
                             </div>
 
@@ -151,11 +128,12 @@ const BookingPage = () => {
                                 </label>
 
                                 <input
-                                    type="text"
-                                    name="name"
+                                    type="number"
+                                    name="code"
                                     id="name"
                                     placeholder="Rent Code"
-                                    required
+                                    {...register("code", { required: true })} readOnly
+                                    defaultValue={booking.code}
                                 />
 
                                 </div>
@@ -182,7 +160,8 @@ const BookingPage = () => {
                                     name="name"
                                     id="name"
                                     placeholder="Announcement"
-                                    required
+                                    {...register("announcement", { required: true })} readOnly
+                                    defaultValue={booking.name}
                                 />
 
                                 </div>
@@ -208,7 +187,8 @@ const BookingPage = () => {
                                     name="name"
                                     id="name"
                                     placeholder="Rent/month"
-                                    required
+                                    {...register("rent", { required: true })} readOnly
+                                    defaultValue={booking.rent}
                                 />
 
                                 </div>

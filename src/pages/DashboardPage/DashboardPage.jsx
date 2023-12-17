@@ -125,7 +125,7 @@ function DashboardPage(props) {
                 <ListItemIcon>
                     <BeenhereIcon></BeenhereIcon>
                 </ListItemIcon>
-                <ListItemText primary="Manage Booking" />
+                <ListItemText primary="My Booking" />
                 </ListItemButton>
             </ListItem>  
         </Link>
@@ -137,7 +137,7 @@ function DashboardPage(props) {
                 <ListItemIcon>
                     <ShoppingCartIcon></ShoppingCartIcon>
                 </ListItemIcon>
-                <ListItemText primary="Manage Cart" />
+                <ListItemText primary="My Cart" />
                 </ListItemButton>
             </ListItem>  
         </Link>
