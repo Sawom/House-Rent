@@ -8,7 +8,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 const ManageCart = () => {
     const [cart, refetch] = useCart();
-    const total = cart.reduce((sum, item)=> item.price + sum, 0 )
+    const total = cart.reduce((sum, item)=> item.rent + sum, 0 )
     const {user} = useAuth();
 
     const handleDelete = (item) => {
@@ -44,39 +44,44 @@ const ManageCart = () => {
 
 
     return (
-        <TableContainer className='container' component={Paper}>
-            <Table sx={{ minWidth: 750 }} aria-label="simple table">
-                <TableHead>
-                <TableRow>
-                    <TableCell >#</TableCell>
-                    <TableCell >Apartment </TableCell>
-                    <TableCell >Code</TableCell>
-                    <TableCell >Announcement</TableCell>
-                    <TableCell >Rent/Month</TableCell>
-                    <TableCell >Action</TableCell>
-                </TableRow>
-                </TableHead>
-                <TableBody>
-                    {
-                        cart.map( (item, index)=> <TableRow  key={item._id} >
-                            <TableCell align=""> {index + 1} </TableCell>
-                            <TableCell align="">
-                                <img style={{width:'50px'}} src={item.img1} alt="" />
-                            </TableCell>
-                            <TableCell >{item.code}</TableCell>
-                            <TableCell >{item.name}</TableCell>
-                            <TableCell >{item.rent} BDT</TableCell>
-                            <TableCell >
-                                <button onClick={() => handleDelete(item)} className="p-2  text-white" 
-                                    style={{backgroundColor: 'red', borderRadius:'10px'}} > <DeleteIcon></DeleteIcon>   
-                                </button>
-                            </TableCell>
-                        </TableRow> )
-                    }
+        <div className='container'>
+            <h5 > <span className='text-primary'>{user.displayName},</span>  here is your cart.</h5>
+            <br />
+            <h4 className='text-xl mx-1'> Total bill: {total} BDT </h4>
+            <TableContainer  component={Paper}>
+                <Table sx={{ minWidth: 750 }} aria-label="simple table">
+                    <TableHead>
+                    <TableRow>
+                        <TableCell >#</TableCell>
+                        <TableCell >Apartment </TableCell>
+                        <TableCell >Code</TableCell>
+                        <TableCell >Announcement</TableCell>
+                        <TableCell >Rent/Month</TableCell>
+                        <TableCell >Action</TableCell>
+                    </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {
+                            cart.map( (item, index)=> <TableRow  key={item._id} >
+                                <TableCell align=""> {index + 1} </TableCell>
+                                <TableCell align="">
+                                    <img style={{width:'50px'}} src={item.img1} alt="" />
+                                </TableCell>
+                                <TableCell >{item.code}</TableCell>
+                                <TableCell >{item.name}</TableCell>
+                                <TableCell >{item.rent} BDT</TableCell>
+                                <TableCell >
+                                    <button onClick={() => handleDelete(item)} className="p-2  text-white" 
+                                        style={{backgroundColor: 'red', borderRadius:'10px'}} > <DeleteIcon></DeleteIcon>   
+                                    </button>
+                                </TableCell>
+                            </TableRow> )
+                        }
 
-                </TableBody>
-            </Table>
-        </TableContainer>
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </div>
     );
 };
 

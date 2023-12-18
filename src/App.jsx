@@ -27,6 +27,8 @@ import ManageCart from "./pages/DashboardPage/Tenant/ManageCart/ManageCart";
 import BookingPage from "./pages/BookingPage/BookingPage";
 import ManageReview from "./pages/DashboardPage/Admin/ManageReview/ManageReview";
 import AddReview from "./pages/DashboardPage/Tenant/AddReview/AddReview";
+import Payment from "./pages/DashboardPage/Tenant/Payment/Payment";
+import PaymentHistory from "./pages/DashboardPage/Tenant/PaymentHistory/PaymentHistory";
 const queryClient = new QueryClient();
 
 function App() {
@@ -75,7 +77,12 @@ function App() {
                       <Route path="managebooking" element={ <ManageBooking></ManageBooking> } ></Route>
                       {/* tenant: managecart */}
                       <Route path="managecart" element={ <ManageCart></ManageCart> } ></Route>
+                      {/* tenant: addreview */}
                       <Route path="addreview" element={ <AddReview></AddReview> } ></Route>
+                      {/* payment */}
+                      <Route path='payment' element={ <Payment></Payment> } ></Route>
+                      {/* payment history */}
+                      <Route path='phistory' element={ <PaymentHistory></PaymentHistory> } ></Route>
                   </Route>
 
                   <Route path="/profile" element={<Profile />} />

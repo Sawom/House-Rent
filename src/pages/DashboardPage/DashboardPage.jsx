@@ -26,7 +26,7 @@ import useAuth from '../Auth/useAuth/useAuth';
 import useAdmin from '../../Hooks/useAdmin';
 import { useQuery } from '@tanstack/react-query';
 import ArticleIcon from '@mui/icons-material/Article';
-
+import PaymentIcon from '@mui/icons-material/Payment';
 
 const drawerWidth = 240;
 
@@ -111,9 +111,6 @@ function DashboardPage(props) {
                 </ListItemButton>
             </ListItem>  
         </Link>
-        
-
-        
 
       </List>
       <Divider />
@@ -164,6 +161,30 @@ function DashboardPage(props) {
                     <ArticleIcon />
                 </ListItemIcon>
                 <ListItemText primary="Add Review" />
+                </ListItemButton>
+            </ListItem>  
+        </Link>
+
+        {/* payment */}
+        <Link to="/dashboard/payment" >
+            <ListItem  disablePadding>
+                <ListItemButton>
+                <ListItemIcon>
+                    <PaymentIcon />
+                </ListItemIcon>
+                <ListItemText primary="Payment" />
+                </ListItemButton>
+            </ListItem>  
+        </Link>
+
+        {/* payment history */}
+        <Link to="/dashboard/phistory" >
+            <ListItem  disablePadding>
+                <ListItemButton>
+                <ListItemIcon>
+                    <PaymentIcon />
+                </ListItemIcon>
+                <ListItemText primary="Payment History" />
                 </ListItemButton>
             </ListItem>  
         </Link>
