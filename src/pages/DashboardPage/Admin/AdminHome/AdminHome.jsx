@@ -15,6 +15,8 @@ const AdminHome = () => {
         </div>
         <div className="card-body">
           <div className="row">
+
+            {/* profile picture */}
             <div className="col-md-3">
               <img
                 src="http://placehold.it/200x200"
@@ -22,7 +24,10 @@ const AdminHome = () => {
                 className="img-fluid rounded-circle mb-3"
               />
             </div>
+
             <div className="col-md-9">
+              
+              {/* name */}
               <div className="form-group mb-2">
                 <label htmlFor="inputName">Name:</label>
                 <input
@@ -33,6 +38,8 @@ const AdminHome = () => {
                   readOnly
                 />
               </div>
+
+              {/* number */}
               <div className="form-group mb-2">
                 <label htmlFor="inputNumber">Number:</label>
                 <input
@@ -44,6 +51,7 @@ const AdminHome = () => {
                 />
               </div>
 
+              {/* email */}
               <div className="form-group mb-2">
                 <label htmlFor="inputEmail">Email:</label>
                 <input
@@ -51,9 +59,11 @@ const AdminHome = () => {
                   className="form-control"
                   id="inputEmail"
                   value="john@example.com"
-                  readOnly
+                  readOnly 
                 />
               </div>
+
+              {/* address */}
               <div className="form-group mb-2">
                 <label htmlFor="inputAddress">Address:</label>
                 <textarea
@@ -65,6 +75,7 @@ const AdminHome = () => {
                   123 Street, City, Country
                 </textarea>
               </div>
+
             </div>
           </div>
         </div>

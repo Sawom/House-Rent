@@ -34,13 +34,11 @@ const BookingPage = () => {
         .then(data =>{
             if(data.data.insertedId){
                 reset();
-                Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'Booking successfully!',
-                            showConfirmButton: false,
-                            timer: 1500
-                    })
+                Swal.fire(
+                        'Done!',
+                        'Your booking is confirmed!',
+                        'success'
+                    )
             }
         })
     }
@@ -64,143 +62,70 @@ const BookingPage = () => {
                     <Grid item xs={12} sm={12} md={6}>
                         <form onSubmit={handleSubmit(onSubmit)} className={classes.register_form} >
                             {/* name */}
-                            <div className={classes.form_control}>
-                                <div className={classes.input_group}>
-                                <label htmlFor="name">
-                                    <span className='d-flex mx-2'>
-                                        <i
-                                        className={`${classes.zmdi} zmdi zmdi-account material-icons-name`}
-                                        ></i>
-                                    <FormLabel>Name:</FormLabel>
-                                    </span>
-                                </label>
-
+                            <div className="form-group mb-2">
+                                <label htmlFor="inputName">Name:</label>
                                 <input
-                                    type="text"
-                                    name="name"
-                                    id="name"
-                                    placeholder="Your Name"
-                                    {...register("name", { required: true })} readOnly
-                                    defaultValue={user.displayName} 
+                                type="text"
+                                className="form-control"
+                                id="inputName"
+                                {...register("name", { required: true })} readOnly
+                                defaultValue={user.displayName} 
                                 />
-
-                                </div>
-                                {errors.name && (
-                                <p className={classes.error_message}>{errors.name}</p>
-                                )}
                             </div>
 
                             {/* email */}
-                            <div className={classes.form_control}>
-                                <div className={classes.input_group}>
-                                <label htmlFor="email">
-                                    <span className='d-flex mx-2'>
-                                        <i className={`${classes.zmdi} zmdi zmdi-email`}></i>
-                                        <FormLabel>Email:</FormLabel>
-                                    </span>
-                                </label>
-
+                            <div className="form-group mb-2">
+                                <label htmlFor="inputName">Email:</label>
                                 <input
-                                    type="email"
-                                    name="email"
-                                    id="email"
-                                    placeholder="Your Email"
-                                    {...register("email", { required: true })} readOnly 
-                                    defaultValue={user.email} 
+                                type="email"
+                                className="form-control"
+                                id="inputEmail"
+                                {...register("email", { required: true })} readOnly 
+                                defaultValue={user.email} 
                                 />
-
-                                </div>
-                                {errors.email && (
-                                <p className={classes.error_message}>{errors.email}</p>
-                                )}
                             </div>
 
+
                             {/* code rent */}
-                            <div className={classes.form_control}>
-                                <div className={classes.input_group}>
-                                <label htmlFor="name">
-                                    <span className='d-flex mx-2'>
-                                        <i
-                                        className={`${classes.zmdi} zmdi zmdi-apps material-icons-name`}
-                                        ></i>
-                                        <FormLabel>Code:</FormLabel>
-                                    </span> 
-                                </label>
-
+                            <div className="form-group mb-2">
+                                <label htmlFor="inputName">Code:</label>
                                 <input
-                                    type="number"
-                                    name="code"
-                                    id="name"
-                                    placeholder="Rent Code"
-                                    {...register("code", { required: true })} readOnly
-                                    defaultValue={booking.code}
+                                type="number"
+                                className="form-control"
+                                id="inputCode"
+                                {...register("code", { required: true })} readOnly
+                                defaultValue={booking.code}
                                 />
-
-                                </div>
-                                {errors.name && (
-                                <p className={classes.error_message}>{errors.name}</p>
-                                )}
                             </div>
 
                             {/* announcement */}
-                            <div className={classes.form_control}>
-                                <div className={classes.input_group}>
-                                
-                                <label htmlFor="name">
-                                    <span className='d-flex mx-2'>
-                                        <i
-                                    className={`${classes.zmdi} zmdi zmdi-info material-icons-name`}
-                                    > </i> 
-                                    <FormLabel>Announcement:</FormLabel>
-                                    </span>
-                                </label>
-
+                            <div className="form-group mb-2">
+                                <label htmlFor="inputName">Announcement:</label>
                                 <input
-                                    type="text"
-                                    name="announce"
-                                    id="name"
-                                    placeholder="Announcement"
-                                    {...register("announcement", { required: true })} readOnly
-                                    defaultValue={booking.name}
+                                type="text"
+                                className="form-control"
+                                id="inputAnnouncement"
+                                {...register("announcement", { required: true })} readOnly
+                                defaultValue={booking.name}
                                 />
-
-                                </div>
-                                {errors.name && (
-                                <p className={classes.error_message}>{errors.name}</p>
-                                )}
                             </div>
 
                             {/* rent */}
-                            <div className={classes.form_control}>
-                                <div className={classes.input_group}>
-                                <label htmlFor="name">
-                                    <span className='d-flex mx-2'>
-                                        <i
-                                        className={`${classes.zmdi} zmdi zmdi-paypal material-icons-name`}
-                                        ></i>
-                                        <FormLabel>Rent(BDT)/month:</FormLabel>
-                                    </span>
-                                </label>
-
+                            <div className="form-group mb-2">
+                                <label htmlFor="inputName">Rent(BDT)/month:</label>
                                 <input
-                                    type="text"
-                                    name="rent"
-                                    id="name"
-                                    placeholder="Rent/month"
-                                    {...register("rent", { required: true })} readOnly
-                                    defaultValue={booking.rent}
+                                type="number"
+                                className="form-control"
+                                id="inputCode"
+                                {...register("rent", { required: true })} readOnly
+                                defaultValue={booking.rent}
                                 />
-
-                                </div>
-                                {errors.name && (
-                                <p className={classes.error_message}>{errors.name}</p>
-                                )}
                             </div>
 
+                            {/* button */}
                             <button variant="contained" className="px-3 text-white btn btn-outline-primary active" >
                                 <small className="d-flex"> <BeenhereIcon></BeenhereIcon>  Book Now </small> 
                             </button>
-
                         </form>
                     </Grid>
 
