@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import useAuth from '../../../Auth/useAuth/useAuth';
+import PaymentIcon from '@mui/icons-material/Payment';
 
 const CheckoutForm = ({price, refetch, cart}) => {
     const stripe = useStripe();
@@ -111,10 +112,14 @@ const CheckoutForm = ({price, refetch, cart}) => {
                     }}
                 required > </CardElement>
                 <br />
-                <button className=' ' type="submit" disabled={!stripe || !clientSecret || processing}>
-                     Pay
+                <button className='px-3 text-white btn btn-outline-primary active' type="submit" disabled={!stripe || !clientSecret || processing}>
+                    <span className='d-flex '> <PaymentIcon className='mx-1'></PaymentIcon> Pay </span> 
                 </button>
             </form> 
+            <br />
+            {/* show error */}
+            {cardError && <p className='text-red-600 ml-8'> {cardError} </p> }
+            {transactionId && <p className='text-primary'> Transaction complete with transactionId: {transactionId} </p> }
         </div>
     );
 };
