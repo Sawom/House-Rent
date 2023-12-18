@@ -20,11 +20,6 @@ const ManageUsers = () => {
         }
     })
 
-    // const [axiosSecure] = useAxiosSecure(); 
-    // const {data: users = [], refetch } = useQuery(['users'], async() =>{
-    //     const res = await axiosSecure.get('/users')
-    //     return res.data ;
-    // })
 
     // make admin function
     const handleMakeAdmin = (user) =>{
@@ -59,7 +54,7 @@ const ManageUsers = () => {
         } )
     }
 
-     // user delete function 
+    // user delete function 
     const handleDeleteUser = (user) =>{
         Swal.fire({
             title: 'Are you sure?',

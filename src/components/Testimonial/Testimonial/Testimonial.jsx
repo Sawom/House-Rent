@@ -73,12 +73,13 @@ const Testimonial = () => {
           navigation={true}
           modules={[Autoplay, Pagination, Navigation]}  >
           {
-              review.map( (quote)=> <SwiperSlide  className="container px-5"
+              review.map( (quote)=> <SwiperSlide  className="container px-5 py-5"
                       key={quote._id} >
                       <div className=" mx-24 my-16 " >
                           <Rating className="mx-auto" style={{ maxWidth: 150 }} value={quote.rating} readOnly  /> <br />
                           <p> {quote.review} </p> <br />
-                          <p className='' > {quote.name} </p>
+                          <p  style={{color: '#00B98E'}} > {quote.name} </p>
+                          <p style={{fontWeight:'bold'}} > Profession:  {quote.profession} </p>
                       </div>
               </SwiperSlide> )
           }

@@ -25,6 +25,8 @@ import Person3Icon from '@mui/icons-material/Person3';
 import useAuth from '../Auth/useAuth/useAuth';
 import useAdmin from '../../Hooks/useAdmin';
 import { useQuery } from '@tanstack/react-query';
+import ArticleIcon from '@mui/icons-material/Article';
+
 
 const drawerWidth = 240;
 
@@ -76,6 +78,18 @@ function DashboardPage(props) {
                     <Person3Icon />
                 </ListItemIcon>
                 <ListItemText primary="Manage Users" />
+                </ListItemButton>
+            </ListItem>  
+        </Link>
+
+        {/* manage review */}
+        <Link to="/dashboard/managereview" >
+            <ListItem  disablePadding>
+                <ListItemButton>
+                <ListItemIcon>
+                    <ArticleIcon />
+                </ListItemIcon>
+                <ListItemText primary="Manage Review" />
                 </ListItemButton>
             </ListItem>  
         </Link>
