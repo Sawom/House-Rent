@@ -156,6 +156,18 @@ function DashboardPage(props) {
             </ListItem>  
         </Link>
 
+        {/* add review */}
+        <Link to="/dashboard/addreview" >
+            <ListItem  disablePadding>
+                <ListItemButton>
+                <ListItemIcon>
+                    <ArticleIcon />
+                </ListItemIcon>
+                <ListItemText primary="Add Review" />
+                </ListItemButton>
+            </ListItem>  
+        </Link>
+
       </List>
       <Divider />
 

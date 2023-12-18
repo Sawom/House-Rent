@@ -26,6 +26,7 @@ import ManageBooking from "./pages/DashboardPage/Tenant/ManageBooking/ManageBook
 import ManageCart from "./pages/DashboardPage/Tenant/ManageCart/ManageCart";
 import BookingPage from "./pages/BookingPage/BookingPage";
 import ManageReview from "./pages/DashboardPage/Admin/ManageReview/ManageReview";
+import AddReview from "./pages/DashboardPage/Tenant/AddReview/AddReview";
 const queryClient = new QueryClient();
 
 function App() {
@@ -74,6 +75,7 @@ function App() {
                       <Route path="managebooking" element={ <ManageBooking></ManageBooking> } ></Route>
                       {/* tenant: managecart */}
                       <Route path="managecart" element={ <ManageCart></ManageCart> } ></Route>
+                      <Route path="addreview" element={ <AddReview></AddReview> } ></Route>
                   </Route>
 
                   <Route path="/profile" element={<Profile />} />

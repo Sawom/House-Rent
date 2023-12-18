@@ -30,11 +30,11 @@ const ManageReview = () => {
         }).then( (result)=>{
             if(result.isConfirmed){
                 fetch(`http://localhost:5000/review/${reviews._id}`, {
-                        method: 'DELETE'
+                    method: 'DELETE'
                 } )
-                .then( res => res.json() )
-                .then(data =>{
-                    if(data.deletedCount > 0 ){
+                .then( res => res.json()  )
+                .then( data=>{
+                    if(data.deletedCount > 0){
                         refetch();
                         Swal.fire({
                             position: 'top-end',
@@ -44,9 +44,10 @@ const ManageReview = () => {
                             timer: 1500
                         })
                     }
-
-                })
+                } )
             }
+            
+
         } )
     }
 
@@ -64,12 +65,13 @@ const ManageReview = () => {
                         <div className="p-4">
                             <h2 className="card-title">  </h2>
                             <Rating style={{ maxWidth: 100 }} value={reviews.rating} readOnly  />
-                            <p> <span className='font-bold' > Review: </span>  {reviews.review}  </p>
-                            <p> <span className='font-bold' > Reviewed by: </span> <span className='text-primary'> {reviews.name} </span>  </p>
-                            
-
+                            <br />
+                            <p> <span style={{fontWeight:'bold'}}  > Review: </span>  {reviews.review}  </p>
+                            <br />
+                            <p> <span style={{fontWeight:'bold'}}  > Reviewed by: </span> <span className='text-primary'> {reviews.name} </span>  </p>
+                            <br />
                             <div className="card-actions justify-end">
-                                <button onClick={() => handleDeleteReview(review)}
+                                <button onClick={() => handleDeleteReview(reviews)}
                                     style={{backgroundColor: 'red', borderRadius:'10px'}}
                                  className="p-2  text-white"> 
                                  <DeleteIcon></DeleteIcon> 
