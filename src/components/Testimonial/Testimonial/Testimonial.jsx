@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import testImg1 from "../../../assets/images/testimonial-1.jpg";
 import testImg2 from "../../../assets/images/testimonial-2.jpg";
@@ -8,29 +8,29 @@ import TestimonialHeader from "../TestimonialHeader/TestimonialHeader";
 import "./Testimonial.css";
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
+import { Rating } from '@smastrom/react-rating';
+import '@smastrom/react-rating/style.css';
+
 
 const Testimonial = () => {
-  // const settings = {
-  //   autoplay: true,
-  //   autoplaySpeed: 1500,
-  //   slidesToShow: 1,
-  //   dots: true,
-  //   infinite: true,
-  //   // arrows: true,
-  //   // prevArrow: <PrevArrow />,
-  //   // nextArrow: <NextArrow />,
-  //   nextArrow: <BiArrowRight />,
-  //   prevArrow: <BiArrowLeft />,
-  //   responsive: [
-  //     {
-  //       breakpoint: 992,
-  //       settings: {
-  //         slidesToShow: 2,
-  //         slidesToScroll: 1,
-  //       },
-  //     },
-  //   ]
-  // };
+  const [review, setReview] = useState([]);
+
+   // load reviews
+    useEffect(()=>{
+        fetch('http://localhost:5000/review')
+            .then(res=> res.json())
+            .then( (data) => {
+                setReview(data)
+            })
+            
+    },[])
+
 
   const settings = {
     autoplay: true,
@@ -55,31 +55,38 @@ const Testimonial = () => {
   };
 
   return (
-    <div id="testimonial" className="container-xxl py-5">
-      <div className="container">
+    <div id="testimonial" className="container py-5  ">
+      <div className="container ">
         <TestimonialHeader />
-        <div
-          className="owl-carousel testimonial-carousel wow fadeInUp"
-          data-wow-delay="0.1s"
-        >
-          <Slider {...settings}>
-            <SingleTestimonial
-              profileImg={testImg1}
-              name="Elizabeth Swann"
-              profession="Teacher"
-            />
-            <SingleTestimonial
-              profileImg={testImg2}
-              name="Hector Barbossa"
-              profession="Banker"
-            />
-            <SingleTestimonial
-              profileImg={testImg3}
-              name="Jack Sparrow"
-              profession="Web developer"
-            />
-          </Slider>
-        </div>
+        
+          
+        <Swiper spaceBetween={30} 
+          centeredSlides={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          
+          navigation={true}
+          modules={[Autoplay, Pagination, Navigation]}  >
+          {
+              review.map( (quote)=> <SwiperSlide  className="container px-5"
+                      key={quote._id} >
+                      <div className=" mx-24 my-16 " >
+                          <Rating className="mx-auto" style={{ maxWidth: 150 }} value={quote.rating} readOnly  /> <br />
+                          <p> {quote.review} </p> <br />
+                          <p className='' > {quote.name} </p>
+                      </div>
+              </SwiperSlide> )
+          }
+        </Swiper>
+
+
+        
+        
       </div>
     </div>
   );

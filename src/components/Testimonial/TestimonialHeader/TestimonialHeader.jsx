@@ -8,11 +8,7 @@ const TestimonialHeader = () => {
       style={{ maxWidth: "600px" }}
     >
       <h1 className="mb-3">Our Clients Say!</h1>
-      <p>
-        Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore
-        lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero
-        dolor duo.
-      </p>
+      
     </div>
   );
 };

@@ -22,6 +22,7 @@
     "@mui/joy": "^5.0.0-beta.15",
     "@mui/material": "^5.14.18",
     "@mui/styles": "^5.14.18",
+    "@smastrom/react-rating": "^1.4.0",
     "@sweetalert2/themes": "^5.0.15",
     "@tanstack/react-query": "^5.13.4",
     "axios": "^1.6.2",
@@ -37,6 +38,7 @@
     "select2": "^4.1.0-rc.0",
     "slick-carousel": "^1.8.1",
     "sweetalert2": "^11.10.1",
+    "swiper": "^11.0.5",
     "tsparticles": "^2.12.0",
     "wow.js": "^1.2.2",
     "wowjs": "^1.1.3"
