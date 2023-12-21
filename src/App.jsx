@@ -29,6 +29,9 @@ import ManageReview from "./pages/DashboardPage/Admin/ManageReview/ManageReview"
 import AddReview from "./pages/DashboardPage/Tenant/AddReview/AddReview";
 import Payment from "./pages/DashboardPage/Tenant/Payment/Payment";
 import PaymentHistory from "./pages/DashboardPage/Tenant/PaymentHistory/PaymentHistory";
+// import AddApartment from "./pages/DashboardPage/Landlord/AddApartment/AddApartment";
+import ManageApartment from "./pages/DashboardPage/Landlord/ManageApartment/ManageApartment";
+import AllApartment from "./pages/DashboardPage/Admin/AllApartment/AllApartment";
 const queryClient = new QueryClient();
 
 function App() {
@@ -41,7 +44,7 @@ function App() {
                     <Route index exact element={<Home />} />
                     <Route path="login" element={<Login />} />
                     <Route path="signup" element={<Signup />} />
-                    <Route path="add-property" element={<AddProperty />} />
+                    {/* <Route path="add-property" element={<AddProperty />} /> */}
                   </Route>
                   {/* apartments */}
                   <Route path="/apartments" element={<Dashboard />} />
@@ -67,9 +70,15 @@ function App() {
                       <Route path='manageusers' element={ <ManageUsers></ManageUsers> } ></Route>
                       {/* manage review */}
                       <Route path='managereview' element={ <ManageReview></ManageReview> } ></Route>
+                      {/* all apartment */}
+                      <Route path='all' element={ <AllApartment></AllApartment> } ></Route>
 
                       {/* landlord home */}
                       <Route path='landlordhome' element={ <LandlordHome></LandlordHome> } > </Route>
+                      {/* landlord: add apartment */}
+                      <Route path='add' element={<AddProperty />} ></Route>
+                      {/* landlord: manage apartment */}
+                      <Route path='manage' element={ <ManageApartment></ManageApartment> } ></Route>
 
                       {/* tenant home */}
                       <Route path='tenanthome' element={ <TenantHome></TenantHome> } > </Route>

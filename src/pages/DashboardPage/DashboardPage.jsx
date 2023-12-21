@@ -27,6 +27,7 @@ import useAdmin from '../../Hooks/useAdmin';
 import { useQuery } from '@tanstack/react-query';
 import ArticleIcon from '@mui/icons-material/Article';
 import PaymentIcon from '@mui/icons-material/Payment';
+import AddHomeIcon from '@mui/icons-material/AddHome';
 
 const drawerWidth = 240;
 
@@ -93,6 +94,18 @@ function DashboardPage(props) {
                 </ListItemButton>
             </ListItem>  
         </Link>
+
+        {/* all apartment */}
+        <Link to="/dashboard/all" >
+            <ListItem  disablePadding>
+                <ListItemButton>
+                <ListItemIcon>
+                    <HomeIcon />
+                </ListItemIcon>
+                <ListItemText primary="All Apartments" />
+                </ListItemButton>
+            </ListItem>  
+        </Link>
         
 
       </List>
@@ -100,7 +113,7 @@ function DashboardPage(props) {
 
       {/* 2nd list landlord */}
       <List>
-         {/*landlord home */}
+        {/*landlord home */}
         <Link to="/dashboard/landlordhome" >
             <ListItem  disablePadding>
                 <ListItemButton>
@@ -108,6 +121,30 @@ function DashboardPage(props) {
                     <CottageIcon />
                 </ListItemIcon>
                 <ListItemText primary="Landlord Home" />
+                </ListItemButton>
+            </ListItem>  
+        </Link>
+
+        {/* add apartment */}
+        <Link to="/dashboard/add" >
+            <ListItem  disablePadding>
+                <ListItemButton>
+                <ListItemIcon>
+                    <AddHomeIcon />
+                </ListItemIcon>
+                <ListItemText primary="Add Apartment" />
+                </ListItemButton>
+            </ListItem>  
+        </Link>
+
+        {/* manage apartment */}
+        <Link to="/dashboard/manage" >
+            <ListItem  disablePadding>
+                <ListItemButton>
+                <ListItemIcon>
+                    <HomeIcon />
+                </ListItemIcon>
+                <ListItemText primary="Manage Apartment" />
                 </ListItemButton>
             </ListItem>  
         </Link>

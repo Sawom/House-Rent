@@ -129,12 +129,12 @@ const DashNavbar = () => {
             </Box>
           )}
 
-          <Link
+          {/* <Link
             to="/add-property"
             className="btn btn-primary px-3 d-none d-lg-flex mx-3"
           >
             Add Property
-          </Link>
+          </Link> */}
         </Toolbar>
       </AppBar>
     </Box>

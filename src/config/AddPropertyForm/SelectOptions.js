@@ -43,7 +43,7 @@ export const categoryOptions = [
   export const genderOptions = [
     { value: "Male only", label: "Male only" },
     { value: "Female only", label: "Female only" },
-
+    { value: "Family", label: "Family" }
   ];
 
   export const monthOptions = [
